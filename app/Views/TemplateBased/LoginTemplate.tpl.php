@@ -36,7 +36,7 @@ global $tplData;
     <b class="center">Login: <?= htmlspecialchars($tplData['user']['login'], ENT_QUOTES) ?></b><br>
     <b class="center">Jméno: <?= htmlspecialchars($tplData['user']['jmeno'], ENT_QUOTES) ?></b><br>
     <b class="center">E-mail: <?= htmlspecialchars($tplData['user']['email'], ENT_QUOTES) ?></b><br>
-    <b class="center">Právo: <?= htmlspecialchars($tplData['userRight'], ENT_QUOTES) ?></b><br>
+    <b class="center">Právo: <?= htmlspecialchars($tplData['userRightName'], ENT_QUOTES) ?></b><br>
     <b class="center">Kurz: <?= htmlspecialchars($tplData['userCourse'], ENT_QUOTES) ?></b>
     <br><br>
 
@@ -44,7 +44,7 @@ global $tplData;
         <a href="index.php?page=user_update" class="button">Změna</a>
         <input type="hidden" name="action" value="logout">
         <input class="button" type="submit" value="Odhlásit">
-        <?php if ($tplData['userRight'] < 2): ?>
+        <?php if ($tplData['userRightWeight'] < 2): ?>
             <a href="index.php?page=management" class="button">Správa uživatelů</a>
         <?php endif; ?>
         <a href="index.php?page=main" class="button">Zpět</a>

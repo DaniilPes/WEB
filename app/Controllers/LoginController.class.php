@@ -54,7 +54,8 @@ class LoginController implements IController {
             $userCourse = $this->db->getCourseById($user['id_kurz']);
 
             $tplData['user'] = $user;
-            $tplData['userRight'] = $userRight['jemno'] ?? '*Neznámé*';
+            $tplData['userRightName'] = $userRight['jemno'] ?? '*Neznámé*';
+            $tplData['userRightWeight'] = $user['id_pravo'];
             $tplData['userCourse'] = $userCourse['nazev'] ?? '*Neznámé*';
         }
 
