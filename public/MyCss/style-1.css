@@ -1,0 +1,182 @@
+/* Общие стили для body */
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
+    font-family: Bahnschrift, serif;
+}
+
+/* Стили для логотипа */
+#logo {
+    font-family: Bahnschrift, serif;
+    font-size: 40px;
+    color: #e6e6e6;
+}
+
+/* Стили для формы ввода */
+#inputForm {
+    position: absolute;
+    background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
+    height: 100%;
+    width: 100%;
+    font-family: Bahnschrift, serif;
+    font-size: 25px;
+}
+
+/* Стили для выравнивания элементов по центру */
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e6e6e6 !important;
+}
+
+/* Стили для блока справа */
+#sprava {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Стили для формы */
+form {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Стили для меток формы */
+label {
+    color: #e6e6e6;
+    margin-bottom: 8px;
+    font-size: 25px;
+}
+
+/* Стили для полей ввода */
+input {
+    margin-bottom: 16px;
+    padding: 8px;
+}
+
+/* Стили для кнопки отправки формы */
+input[type="submit"] {
+    cursor: pointer;
+}
+
+/* Общие стили для кнопок */
+.button, .btn {
+    width: 400px;
+    height: 75px;
+    background-color: rgba(10, 10, 10, 0);
+    border-color: black;
+    border-radius: 50px;
+    font-size: 25px;
+    transition: 0.3s;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 16px;
+}
+
+a.button {
+    border-width: 3px;
+    border-style: groove;
+}
+
+.button:hover, .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Стили для текста */
+b {
+    font-size: 25px;
+}
+
+/* Стили для блока теста */
+#test {
+    position: relative;
+}
+
+/* Стили для ценовых блоков */
+.price {
+    display: flex;
+    flex-wrap: wrap; /* Добавляет перенос строк для детей, если они не помещаются в одну строку */
+    justify-content: center; /* Центрирует элементы внутри контейнера */
+    padding: 20px; /* Добавляет отступы вокруг блока price */
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте элементов */
+}
+
+.priceItem {
+    position: relative;
+    width: 22.5%;
+    height: 500px;
+    margin: 20px 1.25%; /* Сокращает внешний отступ для лучшей респонсивности */
+    border: 3px solid #171616;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте элемента */
+    background: linear-gradient(135deg, rgba(30, 30, 165, 0.8), rgba(145, 30, 30, 0.9)); /* Градиентный фон */
+    border-radius: 15px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень для блока */
+    transition: transform 0.3s, box-shadow 0.3s; /* Плавные переходы */
+}
+
+.priceItem strong {
+    font-size: 35px;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.priceItem hr {
+    width: 80%;
+    margin: 20px auto;
+    border-color: #ffffff;
+}
+
+.priceItem span {
+    margin-top: auto;
+    margin-bottom: 50px;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.priceItem:hover {
+    transform: translateY(-10px); /* Поднятие элемента при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Увеличение тени при наведении */
+}
+
+/* Медиазапросы для респонсивности */
+@media (max-width: 1200px) {
+    .priceItem {
+        width: 30%; /* Увеличивает ширину для устройств с шириной экрана до 1200px */
+    }
+}
+
+@media (max-width: 992px) {
+    .priceItem {
+        width: 45%; /* Увеличивает ширину для устройств с шириной экрана до 992px */
+    }
+}
+
+@media (max-width: 768px) {
+    .priceItem {
+        width: 90%; /* Увеличивает ширину для устройств с шириной экрана до 768px */
+        margin: 10px 0; /* Уменьшает внешние отступы для лучшего размещения элементов */
+    }
+}

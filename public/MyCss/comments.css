@@ -1,0 +1,78 @@
+#test{
+    position: relative;
+    top: 10px;
+}
+
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.comment-text {
+    margin-bottom: 10px;
+}
+
+.comment-success {
+    color: green;
+}
+
+.comment-failure{
+    color: red;
+}
+
+.comment-actions {
+    text-align: right;
+}
+
+.comment .author, .comment .right, .comment .course {
+    margin-right: 10px;
+}
+
+.new-comment {
+    margin-top: 20px;
+}
+
+.new-comment form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new-comment textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.new-comment input[type="submit"] {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-comment input[type="submit"]:hover {
+    background-color: #45a049;
+}
+

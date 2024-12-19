@@ -1,0 +1,164 @@
+@media only screen and (min-width: 376px) {
+    nav{
+        margin-left: -10px;
+    }
+    .nav-item {
+        position: relative;
+        text-decoration: none;
+        transition: .3s;
+
+        color: #ffffff;
+        padding: 10px;
+        font-family: "DM Sans", sans-serif;
+        /*font-weight: 100;*/
+    }
+
+    .NI {
+        padding: 15px;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .bar1, .bar2, .bar3 {
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+    .ProTrain  {
+        position: relative;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+        font-size: 22px;
+    }
+    .NewLevel {
+        position: relative;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+        font-size: 35px;
+    }
+
+    .TextMain1 {
+        font-size: 18px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+
+    }
+
+    #logoMain {
+        max-width: 65px;
+        /*z-index: 10;*/
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .nav-item {
+    position: relative;
+    text-decoration: none;
+    transition: .3s;
+    /*margin: 0px 20px 0px 200px;*/
+
+    color: #ffffff;
+    padding: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 800;
+    /*text-align: center;*/
+}
+
+    .NI {
+        padding: 20px;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 30px;
+        height: 4px;
+        background-color: #ffffff;
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+    .ProTrain  {
+        position: relative;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+        font-size: 25px;
+    }
+    .NewLevel {
+        position: relative;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+    }
+
+    .TextMain1 {
+        font-size: 20px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+    }
+
+    #logoMain {
+        max-width: 90px;
+        /*z-index: 10;*/
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .nav-item {
+        position: relative;
+        text-decoration: none;
+        transition: .3s;
+        /*margin: 0px 20px 0px 200px;*/
+
+        color: #ffffff;
+        padding: 10px;
+        font-family: "DM Sans", sans-serif;
+        /*font-weight: 900;*/
+        /*text-align: center;*/
+    }
+
+    .NI {
+        padding: 25px;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 900;
+        font-size: 22px;
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #ffffff;
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+    .ProTrain  {
+        position: relative;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+        font-size: 30px;
+    }
+
+    .NewLevel {
+        position: relative;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+        font-size: 45px;
+    }
+
+    .TextMain1 {
+        font-size: 25px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 100;
+    }
+
+    #logoMain {
+        max-width: 100px;
+        /*z-index: 10;*/
+    }
+}
+

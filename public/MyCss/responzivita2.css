@@ -1,0 +1,551 @@
+@media only screen and (min-width: 376px) {
+    nav{
+        margin-left: -10px;
+    }
+
+    .nav-item {
+        position: relative;
+        text-decoration: none;
+        transition: .3s;
+
+        color: #ffffff;
+        padding: 10px;
+        font-family: "DM Sans", sans-serif;
+        /*font-weight: 100;*/
+    }
+
+    .NI {
+        padding: 15px;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+
+    #logoMain {
+        max-width: 65px;
+        z-index: 10;
+    }
+
+    #cmdPic{
+        margin-left: 3%;
+        align-items: center;
+        width: 0;
+    }
+
+    .cmdPicString{
+        margin-top: -80px;
+        max-width: 90%;
+        margin-left: 5%;
+        font-size: 20px;
+    }
+
+    .osnova1\.1{
+        flex-direction: column;
+    }
+
+    #learnMoreButton{
+        top: 100px;
+        font-size: 25px;
+        min-width: 50%;
+        left: 25%;
+    }
+
+    .pros{
+        min-width: 40%;
+        margin-left:5%;
+
+        flex: 1;
+    }
+
+    .test{
+        /*max-width: 90%;*/
+        width: 80%;
+        /*min-width: 80%;*/
+        height: 1450px;
+        margin-top: 100px;
+        margin-left: 10%;
+        /*opacity: 50%;*/
+    }
+
+    #aboutUsH1 {
+        margin-left: 29%;
+        margin-top: 300px;
+        font-size: 40px;
+        /*margin-right: 25%;*/
+
+        flex: 1;
+        color: white;
+
+    }
+
+    #aboutUs {
+        width: 80%;
+        min-height: 600px;
+        padding: 40px;
+        margin-top: 100px;
+        /*margin-left: 5%;*/
+        font-size: 30px;
+        /*min-width: 600px;*/
+
+        color: #e4e4e4;
+        background-color: rgba(0,0,0,0);
+        border: 5px solid black;
+
+    }
+
+    .courses{
+        flex-direction: column;
+    }
+
+    #prof1 {
+        /*margin-left: 10%;*/
+
+    }
+
+    #prof2 {
+        /*margin-left: 50%;*/
+        margin-top: 360px;
+    }
+
+    #prof3 {
+        /*margin-left: 10%;*/
+        margin-top: 720px;
+    }
+
+    #prof4 {
+        /*margin-left: 50%;*/
+        margin-top: 1080px;
+    }
+
+    .professionals {
+        position: absolute;
+        width: 70%;
+        height: 8%;
+        background-color: rgb(115,29,48);
+        margin-left: 5%;
+        /*margin-top: 100px;*/
+        text-align: center;
+        color: #6f42c1;
+    }
+
+}
+
+@media only screen and (min-width: 868px) {
+    .nav-item {
+        position: relative;
+        text-decoration: none;
+        transition: .3s;
+        /*margin: 0px 20px 0px 200px;*/
+
+        color: #ffffff;
+        padding: 10px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 800;
+        /*text-align: center;*/
+    }
+
+    .NI {
+        padding: 20px;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 30px;
+        height: 4px;
+        background-color: #ffffff;
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+
+    #logoMain{
+        max-width: 90px;
+    }
+
+    #cmdPic{
+        /*position: relative;*/
+        margin-left: 5%;
+        /*margin-top: 180px;*/
+        /*right: 0;*/
+        min-width: 90%;
+    }
+
+    .cmdPicString{
+        margin-top: 100px;
+    }
+
+    .osnova1\.1{
+        flex-direction: column;
+    }
+
+    #learnMoreButton{
+        top: 100px;
+        font-size: 25px;
+        min-width: 30%;
+        left: 35%;
+    }
+
+    .pros{
+        min-width: 40%;
+        margin-left:5%;
+
+        flex: 1;
+    }
+
+    .test{
+        /*max-width: 50%;*/
+        width: 90%;
+        min-width: 600px;
+        height: 850px;
+        margin-top: 100px;
+        margin-left: 5%;
+
+        /*opacity: 50%;*/
+    }
+
+    #aboutUsH1 {
+        margin-left: 35%;
+        margin-top: 300px;
+        font-size: 50px;
+
+        flex: 1;
+        color: white;
+
+    }
+
+    #aboutUs {
+        width: 70%;
+        min-height: 600px;
+        padding: 80px;
+        margin-top: 100px;
+        font-size: 30px;
+        min-width: 600px;
+
+
+        color: #e4e4e4;
+        background-color: rgba(0,0,0,0);
+        border: 5px solid black;
+
+    }
+
+    .courses{
+        flex-direction: column;
+    }
+
+    #prof1 {
+        margin-left: 10%;
+
+    }
+
+    #prof2 {
+        margin-left: 50%;
+        margin-top: 50px;
+    }
+
+    #prof3 {
+        margin-left: 10%;
+        margin-top: 400px;
+    }
+
+    #prof4 {
+        margin-left: 50%;
+        margin-top: 450px;
+    }
+
+    .professionals {
+        position: absolute;
+        width: 30%;
+        height: 8%;
+        /*background-color: rgb(115,29,48);*/
+        margin-left: 5%;
+        margin-top: 0px;
+        text-align: center;
+        color: #6f42c1;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .nav-item {
+        position: relative;
+        text-decoration: none;
+        transition: .3s;
+        /*margin: 0px 20px 0px 200px;*/
+
+        color: #ffffff;
+        padding: 10px;
+        font-family: "DM Sans", sans-serif;
+        /*font-weight: 900;*/
+        /*text-align: center;*/
+    }
+
+    .NI {
+        padding: 25px;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 900;
+        font-size: 22px;
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #ffffff;
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    #logoMain{
+        max-width: 100px;
+    }
+
+    #cmdPic{
+
+        min-width: 90%;
+    }
+
+    .osnova1\.1{
+        flex-direction: column;
+    }
+
+    .cmdPicString{
+        font-size: 28px;
+    }
+
+    #learnMoreButton{
+        top: 100px;
+        font-size: 25px;
+        min-width: 30%;
+        left: 35%;
+    }
+
+    .pros{
+        min-width: 40%;
+        margin-left:5%;
+
+        flex: 1;
+    }
+
+    .test{
+        /*max-width: 50%;*/
+        width: 90%;
+        min-width: 600px;
+        height: 450px;
+        margin-top: 100px;
+        /*margin-left: 10%;*/
+
+        /*opacity: 50%;*/
+    }
+    #prof1 {
+        margin-left: 0%;
+        /*left: 10%;*/
+        /*top: 1vh;*/
+    }
+
+    #prof2 {
+        margin-left: 22%;
+        margin-top: 50px;
+    }
+
+    #prof3 {
+        margin-left: 44%;
+        margin-top: 0px;
+    }
+
+    #prof4 {
+        margin-left: 65.5%;
+        margin-top: 50px;
+    }
+
+    .professionals {
+        position: absolute;
+        width: 20%;
+        height: 8%;
+        /*background-color: rgb(115,29,48);*/
+        margin-left: 5%;
+        margin-top: 0px;
+        text-align: center;
+        color: #E4E4E4;
+    }
+
+    #aboutUsH1 {
+        margin-left: 20%;
+        margin-top: 300px;
+        font-size: 50px;
+
+        flex: 1;
+        color: white;
+
+    }
+
+    #aboutUs {
+        width: 80%;
+        min-height: 600px;
+        padding: 80px;
+        margin-top: 100px;
+        font-size: 40px;
+        /*min-width: 600px;*/
+
+        color: #e4e4e4;
+        background-color: rgba(0,0,0,0);
+        border: 5px solid black;
+
+    }
+
+    .courses{
+        flex-direction: column;
+    }
+
+    #contact {
+        width: 100%;
+        min-height: 220px;
+        background-color: #1f1f1f;
+    }
+
+    .custom-tabs{
+        /*position: relative;*/
+        font-size: 20px;
+        margin-left: 5%;
+        max-width: 300px;
+    }
+
+    #tabs0 {
+        position: absolute;
+        /*position: relative;*/
+        margin-top: 40px;
+        font-size: 16px;
+    }
+
+    #tabs1 {
+        position: absolute;
+        margin-top: 40px;
+        /*margin-left: 30vh;*/
+
+        margin-left: 30%;
+
+    }
+
+    #tabs2 {
+        position: absolute;
+        margin-top: 40px;
+        margin-left: 43%;
+
+    }
+
+    #tabs3 {
+        position: absolute;
+        margin-top: 40px;
+        margin-left: 66%;
+        max-width: 700px;
+    }
+}
+
+@media only screen and (min-width: 1400px){
+    #cmdPic{
+        min-width: 35%;
+    }
+
+    .osnova1\.1{
+        flex-direction: row;
+    }
+
+    #learnMoreButton{
+        top: 100px;
+        font-size: 30px;
+        min-width: 30%;
+        left: 35%;
+    }
+
+    .pros{
+        min-width: 40%;
+        margin-left:5%;
+
+        flex: 1;
+    }
+    .professionals {
+        position: absolute;
+        width: 15%;
+        height: 375px;
+        margin-left: 5%;
+        margin-top: 0px;
+        text-align: center;
+        color: #E4E4E4;
+    }
+    .test{
+        max-width: 45%;
+        width: 45%;
+        height: 900px;
+        margin-top: -750px;
+        margin-left: 55%;
+
+        /*opacity: 50%;*/
+    }
+
+    #prof1 {
+        /*left: 10%;*/
+        /*top: 1vh;*/
+    }
+
+    #prof2 {
+        margin-left: 25%;
+        margin-top: 50px;
+    }
+
+    #prof3 {
+        margin-left: 0%;
+        margin-top: 425px;
+    }
+
+    #prof4 {
+        margin-left: 25%;
+        margin-top: 475px;
+    }
+
+    #aboutUsH1 {
+        margin-left: 15%;
+        margin-top: 300px;
+        font-size: 50px;
+
+        flex: 1;
+        color: white;
+
+    }
+
+    #aboutUs {
+        width: 40%;
+        min-height: 600px;
+        padding: 80px;
+        margin-top: 100px;
+        font-size: 45px;
+        /*min-width: 600px;*/
+
+        /*color: #e4e4e4;*/
+        /*background-color: rgba(0,0,0,0);*/
+        /*border: 5px solid black;*/
+
+    }
+
+    .courses{
+        flex-direction: row;
+    }
+
+    .custom-tabs {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .custom-tabs > div {
+        text-align: center;
+    }
+}
