@@ -16,11 +16,10 @@ class LoginController implements IController {
         $this->db = DatabaseModel::getDatabaseModel();
     }
 
-    public function handleLogin() {
-        // Обработка входа
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'login') {
-            $login = $_POST['login'] ?? '';
-            $password = $_POST['heslo'] ?? '';
+    private function handleLogin() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
+            $login = trim($_POST['login'] ?? '');
+            $password = trim($_POST['heslo'] ?? '');
 
             if ($this->db->userLogin($login, $password)) {
                 header("Location: index.php?page=login");
@@ -33,22 +32,22 @@ class LoginController implements IController {
         return [];
     }
 
-    public function handleLogout() {
-        // Обработка выхода
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'logout') {
+    private function handleLogout() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'logout') {
             $this->db->userLogout();
             header("Location: index.php?page=login");
             exit;
         }
     }
 
-    public function show(string $pageTitle): array{
-        $this->handleLogin();
+    public function show(string $pageTitle): array {
+        // Обработка входа и выхода
+        $loginErrors = $this->handleLogin();
         $this->handleLogout();
+
         $tplData = [];
-        // nazev
         $tplData['title'] = $pageTitle;
-        // Проверка, авторизован ли пользователь
+
         if ($this->db->isUserLogged()) {
             $user = $this->db->getLoggedUserData();
             $userRight = $this->db->getRightById($user['id_pravo']);
@@ -56,10 +55,10 @@ class LoginController implements IController {
 
             $tplData['user'] = $user;
             $tplData['userRight'] = $userRight['jemno'] ?? '*Neznámé*';
-            $tplData['userCourse'] =  $userCourse['nazev'] ?? '*Neznámé*';
-
+            $tplData['userCourse'] = $userCourse['nazev'] ?? '*Neznámé*';
         }
 
-        return $tplData;
+        // Соединяем ошибки с данными для шаблона
+        return array_merge($tplData, $loginErrors);
     }
 }

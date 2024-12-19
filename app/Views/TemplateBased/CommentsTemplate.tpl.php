@@ -5,8 +5,7 @@ global $tplData;
 <link rel="stylesheet" href="public/MyCss/comments.css">
 <link rel="stylesheet" href="public/MyCss/pre-main.css">
 <link rel="stylesheet" href="public/MyCss/Responzivita.css">
-<!--<link rel="stylesheet" href="public/MyCss/style-2.css">-->
-<!--<link rel="stylesheet" href="public/MyCss/responzivita2.css">-->
+
 <style>
     body {
         background: radial-gradient(
@@ -20,21 +19,18 @@ global $tplData;
         height: 100%;
     }
     .divNav {
-        /*position: relative;*/
-        /*top: -8px;*/
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         background-color: #0e111a;
         background-image: linear-gradient(
                 to right,
                 rgba(145,30,30,0.9),
                 rgba(30,30,165,0.8));
         height: 10vh;
-
     }
 </style>
+
 <div class="comments-section">
     <?php if ($tplData['isLogged']): ?>
         <?php foreach ($tplData['comments'] as $comment): ?>
@@ -55,7 +51,7 @@ global $tplData;
                 <?php if ($tplData['user']['id_pravo'] < 2): ?>
                     <div class="comment-actions">
                         <form action="index.php?page=comments" method="POST">
-                            <input type="hidden" name="id_comment" value="<?= $comment['id_comment'] ?>">
+                            <input type="hidden" name="id_comment" value="<?= htmlspecialchars($comment['id_comment']) ?>">
                             <input type="submit" name="delete_comment" value="Smazat">
                         </form>
                     </div>
@@ -74,4 +70,3 @@ global $tplData;
         <p>Please, <a href="index.php?page=login">Log in</a>, to leave a comment.</p>
     <?php endif; ?>
 </div>
-

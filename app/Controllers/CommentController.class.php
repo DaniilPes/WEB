@@ -12,19 +12,17 @@ class CommentController implements IController {
     }
 
     public function handleComments(): array {
-        // Получаем комментарии
-        $comments = $this->db->getAllComments();
+        $comments = $this->db->getAllComments(); // getAllComments уже использует защищенные запросы
         $result = [];
 
         foreach ($comments as $comment) {
-            $commentUser = $this->db->getUserById($comment['autor_id']);
             $result[] = [
-                'id_comment' => $comment['id_comment'],
-                'text' => $comment['text'],
-                'image_path' => $comment['image_path'],
-                'autor_name' => $commentUser['jmeno'],
-                'right' => $commentUser['id_pravo'],
-                'course' => $commentUser['id_kurz']
+                'id_comment' => htmlspecialchars($comment['id_comment'], ENT_QUOTES),
+                'text' => htmlspecialchars($comment['text'], ENT_QUOTES),
+                'image_path' => htmlspecialchars($comment['image_path'], ENT_QUOTES),
+                'autor_name' => htmlspecialchars($comment['autor_name'], ENT_QUOTES),
+                'right' => htmlspecialchars($comment['right'], ENT_QUOTES),
+                'course' => htmlspecialchars($comment['course'], ENT_QUOTES),
             ];
         }
 

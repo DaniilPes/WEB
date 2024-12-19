@@ -165,11 +165,20 @@ class DatabaseModel {
         return $this->insertIntoTable(TABLE_UZIVATEL, $insertStatement, $insertValues);
     }
 
+//    public function deleteCommentById(int $id_comment): bool {
+//        $stmt = $this->pdo->prepare("DELETE FROM comments WHERE id_comment = :id_comment");
+//        return $stmt->execute([':id_comment' => $id_comment]);
+////        $query = "DELETE FROM " . TABLE_COMMENTS . " WHERE id_comment = :id";
+////        $stmt = $this->pdo->prepare($query);
+////        return $stmt->execute(['id' => $commentId]);
+//    }
+
     public function deleteCommentById(int $commentId): bool {
-        $query = "DELETE FROM " . TABLE_COMMENTS . " WHERE id_comment = :id";
+        $query = "DELETE FROM comments WHERE id_comment = :id_comment";
         $stmt = $this->pdo->prepare($query);
-        return $stmt->execute(['id' => $commentId]);
+        return $stmt->execute([':id_comment' => $commentId]);
     }
+
 
 
     public function getRightById(int $id){
@@ -183,17 +192,53 @@ class DatabaseModel {
         }
     }
 
-    public function addComment($autor_id, $text, $imagePath) {
-        $insertStatement = "autor_id, text, image_path";
-        $insertValues = "'$autor_id', '$text', '$imagePath'";
-        return $this->insertIntoTable(TABLE_COMMENTS, $insertStatement, $insertValues);
+//    public function addComment($author_id, $text, $imagePath) {
+//        $stmt = $this->pdo->prepare("INSERT INTO comments (autor_id, text, image_path) VALUES (:autor_id, :text, :image_path)");
+//        return $stmt->execute([
+//            ':autor_id' => $author_id,
+//            ':text' => $text,
+//            ':image_path' => $imagePath
+//        ]);
+//
+////        $insertStatement = "autor_id, text, image_path";
+////        $insertValues = "'$autor_id', '$text', '$imagePath'";
+////        return $this->insertIntoTable(TABLE_COMMENTS, $insertStatement, $insertValues);
+//    }
+
+//    public function getAllComments(){
+//        // ziskam vsechna prava z DB razena dle ID a vratim je
+//        $comments = $this->selectFromTable(TABLE_COMMENTS, "", "id_comment ASC");
+//        return $comments;
+//    }
+
+    public function addComment(int $userId, string $text, ?string $imagePath): bool {
+        $query = "INSERT INTO comments (autor_id, text, image_path) VALUES (:autor_id, :text, :image_path)";
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute([
+            ':autor_id' => $userId,
+            ':text' => $text,
+            ':image_path' => $imagePath,
+        ]);
     }
 
-    public function getAllComments(){
-        // ziskam vsechna prava z DB razena dle ID a vratim je
-        $comments = $this->selectFromTable(TABLE_COMMENTS, "", "id_comment ASC");
-        return $comments;
+    public function getAllComments() {
+        $stmt = $this->pdo->query("
+        SELECT 
+            c.id_comment, 
+            c.text, 
+            c.image_path, 
+            u.jmeno AS autor_name, 
+            p.jemno AS `right`, 
+            k.nazev AS course
+        FROM comments c
+        JOIN uzivatel u ON c.autor_id = u.id_uzivatel
+        JOIN pravo p ON u.id_pravo = p.id_pravo
+        JOIN kurz k ON u.id_kurz = k.kurz_id
+        ORDER BY c.id_comment DESC
+    ");
+        return $stmt->fetchAll();
     }
+
 
     public function insertIntoTable(string $tableName, string $insertStatement, string $insertValues):bool {
         // slozim dotaz

@@ -7,6 +7,13 @@ class FileHandler {
             $imageTmpPath = $file['tmp_name'];
             $imageName = $file['name'];
 
+            $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            $fileMimeType = mime_content_type($imageTmpPath);
+
+            if (!in_array($fileMimeType, $allowedMimeTypes)) {
+                return null; // Неподдерживаемый формат файла
+            }
+
             list($width, $height) = getimagesize($imageTmpPath);
 
             $maxWidth = 800;
@@ -42,6 +49,7 @@ class FileHandler {
 
         return null;
     }
+
 }
 
 ?>

@@ -11,45 +11,53 @@ class RegistrationController implements IController {
         $this->db = DatabaseModel::getDatabaseModel();
     }
 
-
-    private function processRegistration($postData) {
+    private function processRegistration(array $postData): string {
         // Проверка данных
-        if (empty($postData['login']) || empty($postData['heslo']) || empty($postData['heslo2']) ||
-            empty($postData['jmeno']) || empty($postData['email']) || empty($postData['kurz']) ||
+        if (
+            empty($postData['login']) ||
+            empty($postData['heslo']) ||
+            empty($postData['heslo2']) ||
+            empty($postData['jmeno']) ||
+            empty($postData['email']) ||
+            empty($postData['kurz']) ||
             $postData['heslo'] !== $postData['heslo2']
         ) {
-            return "ERROR: Не были заполнены все обязательные поля или пароли не совпадают.";
+            return "ERROR: Все поля должны быть заполнены, и пароли должны совпадать.";
+        }
+
+        // Проверка уникальности логина
+        if ($this->db->getUserByLogin($postData['login'])) {
+            return "ERROR: Пользователь с таким логином уже существует.";
         }
 
         // Добавление пользователя
         $success = $this->db->addNewUser(
-            $postData['login'],
-            $postData['heslo'],
-            $postData['jmeno'],
-            $postData['email'],
+            htmlspecialchars($postData['login'], ENT_QUOTES),
+            htmlspecialchars($postData['heslo'], ENT_QUOTES),
+            htmlspecialchars($postData['jmeno'], ENT_QUOTES),
+            htmlspecialchars($postData['email'], ENT_QUOTES),
             3, // Роль пользователя по умолчанию
-            $postData['kurz']
+            intval($postData['kurz'])
         );
 
-        if ($success) {
-            return "OK: Пользователь был успешно зарегистрирован.";
-        } else {
-            return "ERROR: Ошибка регистрации пользователя.";
-        }
+        return $success ? "OK: Пользователь успешно зарегистрирован." : "ERROR: Ошибка регистрации пользователя.";
     }
 
-    public function show(string $pageTitle): array{
-        $tplData['title'] = $pageTitle;
-        $tplData['isLogged'] = $this->db->isUserLogged();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['potvrzeni'])) {
-                $tplData['error'] = $this->processRegistration($_POST);
-            }
+    public function show(string $pageTitle): array {
+        $tplData = [
+            'title' => $pageTitle,
+            'isLogged' => $this->db->isUserLogged(),
+            'message' => '',
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['potvrzeni'])) {
+            $tplData['message'] = $this->processRegistration($_POST);
         }
 
         if (!$tplData['isLogged']) {
             $tplData['courses'] = $this->db->getAllCourses();
         }
+
         return $tplData;
     }
 }
