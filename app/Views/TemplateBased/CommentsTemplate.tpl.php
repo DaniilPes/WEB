@@ -33,8 +33,18 @@ global $tplData;
 
 <div class="comments-section">
     <?php if ($tplData['isLogged']): ?>
-        <?php foreach ($tplData['comments'] as $comment): ?>
-            <div class="comment">
+        <?php foreach ($tplData['comments'] as $comment):
+            $commentClass = '';
+            if ($comment['right'] == 'SuperAdmin') { // Суперадмин
+                $commentClass = 'superadmin-comment';
+            } elseif ($comment['right'] == 'Admin') { // Админ
+                $commentClass = 'admin-comment';
+            }
+
+        ?>
+
+
+            <div class="comment <?= $commentClass ?>">
                 <div class="comment-header">
                     <span class="author"><strong>Autor:</strong> <?= htmlspecialchars($comment['autor_name']) ?></span>
                     <span class="right"><strong>Pravo:</strong> <?= htmlspecialchars($comment['right']) ?></span>

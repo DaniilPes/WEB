@@ -8,8 +8,6 @@ global $tplData;
 </style>
 <script src="public/javaScript/management.js"></script>
 
-<div class="alert-info">TemplateBased</div>
-
 <div class="container">
     <h2>Seznam uživatelů</h2>
     <a href="index.php?page=login" class="button">Zpět</a>

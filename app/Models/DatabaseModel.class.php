@@ -83,24 +83,6 @@ class DatabaseModel {
         return self::$database;
     }
 
-
-    //////////////////////////////////////////////////////////
-    ///////////  Prace s databazi  /////////////////////////
-    //////////////////////////////////////////////////////////
-
-    /**
-     *  Vrati seznam vsech pohadek pro uvodni stranku.
-     *  @return array Obsah uvodu.
-     */
-//    public function getAllIntroductions():array {
-//        // pripravim dotaz
-//        $q = "SELECT * FROM ".TABLE_INTRODUCTION;
-//        // provedu a vysledek vratim jako pole
-//        // protoze je o uzkazku, tak netestuju, ze bylo neco vraceno
-//        return $this->pdo->query($q)->fetchAll();
-//    }
-    
-    
     /**
      *  Vrati seznam vsech uzivatelu pro spravu uzivatelu.
      *  @return array Obsah spravy uzivatelu.
@@ -115,20 +97,27 @@ class DatabaseModel {
      *  Smaze daneho uzivatele z DB.
      *  @param int $userId  ID uzivatele.
      */
-    public function deleteUser(int $userId):bool {
-        // pripravim dotaz
-        $q = "DELETE FROM ".TABLE_UZIVATEL." WHERE id_user = $userId";
-        // provedu dotaz
-        $res = $this->pdo->query($q);
-        // pokud neni false, tak vratim vysledek, jinak null
-        if ($res) {
-            // neni false
-            return true;
-        } else {
-            // je false
-            return false;
-        }
+//    public function deleteUser(int $userId):bool {
+//        // pripravim dotaz
+//        $q = "DELETE FROM ".TABLE_UZIVATEL." WHERE id_user = $userId";
+//        // provedu dotaz
+//        $res = $this->pdo->query($q);
+//        // pokud neni false, tak vratim vysledek, jinak null
+//        if ($res) {
+//            // neni false
+//            return true;
+//        } else {
+//            // je false
+//            return false;
+//        }
+//    }
+
+    public function deleteUser(int $userId): bool {
+        $query = "DELETE FROM " . TABLE_UZIVATEL . " WHERE id_uzivatel = :userId";
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute([':userId' => $userId]);
     }
+
 
     //////////////////////////////////////////////////////////
     ///////////  KONEC: Prace s databazi  /////////////////////////
@@ -154,16 +143,29 @@ class DatabaseModel {
         }
     }
 
+//    public function addNewUser(string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $kurz){
+//        // hlavicka pro vlozeni do tabulky uzivatelu
+//        $insertStatement = "login, heslo, jmeno, email, id_pravo, id_kurz";
+//        // hodnoty pro vlozeni do tabulky uzivatelu
+//        $insertValues = "'$login', '$heslo', '$jmeno', '$email', $idPravo, '$kurz'";
+//        // provedu dotaz a vratim jeho vysledek
+//        return $this->insertIntoTable(TABLE_UZIVATEL, $insertStatement, $insertValues);
+//    }
 
-
-    public function addNewUser(string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $kurz){
-        // hlavicka pro vlozeni do tabulky uzivatelu
-        $insertStatement = "login, heslo, jmeno, email, id_pravo, id_kurz";
-        // hodnoty pro vlozeni do tabulky uzivatelu
-        $insertValues = "'$login', '$heslo', '$jmeno', '$email', $idPravo, '$kurz'";
-        // provedu dotaz a vratim jeho vysledek
-        return $this->insertIntoTable(TABLE_UZIVATEL, $insertStatement, $insertValues);
+    public function addNewUser(string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $kurz): bool {
+        $query = "INSERT INTO " . TABLE_UZIVATEL . " (login, heslo, jmeno, email, id_pravo, id_kurz) 
+              VALUES (:login, :heslo, :jmeno, :email, :idPravo, :kurz)";
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute([
+            ':login' => $login,
+            ':heslo' => $heslo,
+            ':jmeno' => $jmeno,
+            ':email' => $email,
+            ':idPravo' => $idPravo,
+            ':kurz' => $kurz,
+        ]);
     }
+
 
 //    public function deleteCommentById(int $id_comment): bool {
 //        $stmt = $this->pdo->prepare("DELETE FROM comments WHERE id_comment = :id_comment");
@@ -179,8 +181,6 @@ class DatabaseModel {
         return $stmt->execute([':id_comment' => $commentId]);
     }
 
-
-
     public function getRightById(int $id){
         // ziskam pravo dle ID
         $rights = $this->selectFromTable(TABLE_PRAVO, "id_pravo=$id");
@@ -191,25 +191,6 @@ class DatabaseModel {
             return $rights[0];
         }
     }
-
-//    public function addComment($author_id, $text, $imagePath) {
-//        $stmt = $this->pdo->prepare("INSERT INTO comments (autor_id, text, image_path) VALUES (:autor_id, :text, :image_path)");
-//        return $stmt->execute([
-//            ':autor_id' => $author_id,
-//            ':text' => $text,
-//            ':image_path' => $imagePath
-//        ]);
-//
-////        $insertStatement = "autor_id, text, image_path";
-////        $insertValues = "'$autor_id', '$text', '$imagePath'";
-////        return $this->insertIntoTable(TABLE_COMMENTS, $insertStatement, $insertValues);
-//    }
-
-//    public function getAllComments(){
-//        // ziskam vsechna prava z DB razena dle ID a vratim je
-//        $comments = $this->selectFromTable(TABLE_COMMENTS, "", "id_comment ASC");
-//        return $comments;
-//    }
 
     public function addComment(int $userId, string $text, ?string $imagePath): bool {
         $query = "INSERT INTO comments (autor_id, text, image_path) VALUES (:autor_id, :text, :image_path)";
@@ -239,79 +220,122 @@ class DatabaseModel {
         return $stmt->fetchAll();
     }
 
+//    public function insertIntoTable(string $tableName, string $columns, array $values): bool {
+//        $placeholders = implode(', ', array_fill(0, count($values), '?'));
+//        $query = "INSERT INTO $tableName ($columns) VALUES ($placeholders)";
+//        $stmt = $this->pdo->prepare($query);
+//        return $stmt->execute(array_values($values));
+//    }
+//
+//    public function deleteFromTable(string $tableName, string $whereColumn, $whereValue): bool {
+//        $query = "DELETE FROM $tableName WHERE $whereColumn = ?";
+//        $stmt = $this->pdo->prepare($query);
+//        return $stmt->execute([$whereValue]);
+//    }
 
-    public function insertIntoTable(string $tableName, string $insertStatement, string $insertValues):bool {
-        // slozim dotaz
-        $q = "INSERT INTO $tableName($insertStatement) VALUES ($insertValues)";
-        // provedu ho a vratim uspesnost vlozeni
-        $obj = $this->executeQuery($q);
-        // pokud ($obj == null), tak vratim false
-        return ($obj != null);
+//    public function getCourseById(int $id){
+//        $courses = $this->selectFromTable(TABLE_KURZY, "kurz_id=$id");
+//        if(empty($courses)){
+////            echo "aaaaaaaaa";
+//            return null;
+//        } else {
+//
+//            return $courses[0];
+//        }
+//    }
+
+    public function getCourseById(int $id) {
+        $query = "SELECT * FROM " . TABLE_KURZY . " WHERE kurz_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch();
     }
 
-    public function deleteFromTable(string $tableName, string $whereStatement):bool {
-        // slozim dotaz
-        $q = "DELETE FROM $tableName WHERE $whereStatement";
-        // provedu ho a vratim vysledek
-        $obj = $this->executeQuery($q);
-        // pokud ($obj == null), tak vratim false
-        return ($obj != null);
-    }
 
-    public function getCourseById(int $id){
-        $courses = $this->selectFromTable(TABLE_KURZY, "kurz_id=$id");
-        if(empty($courses)){
-//            echo "aaaaaaaaa";
-            return null;
-        } else {
+//    public function selectFromTable(string $tableName, string $whereStatement = "", string $orderByStatement = ""):array {
+//        // slozim dotaz
+//        $q = "SELECT * FROM ".$tableName
+//            .(($whereStatement == "") ? "" : " WHERE $whereStatement")
+//            .(($orderByStatement == "") ? "" : " ORDER BY $orderByStatement");
+//        // provedu ho a vratim vysledek
+//        $obj = $this->executeQuery($q);
+//        // pokud je null, tak vratim prazdne pole
+//        if($obj == null){
+//            return [];
+//        }
+//
+//        return $obj->fetchAll();
+//    }
 
-            return $courses[0];
+    public function selectFromTable(string $tableName, string $whereStatement = "", string $orderByStatement = ""): array {
+        $query = "SELECT * FROM " . $tableName;
+        if (!empty($whereStatement)) {
+            $query .= " WHERE " . $whereStatement;
         }
-    }
-
-    public function getCourse(int $user_id){
-
-    }
-
-
-
-    public function selectFromTable(string $tableName, string $whereStatement = "", string $orderByStatement = ""):array {
-        // slozim dotaz
-        $q = "SELECT * FROM ".$tableName
-            .(($whereStatement == "") ? "" : " WHERE $whereStatement")
-            .(($orderByStatement == "") ? "" : " ORDER BY $orderByStatement");
-        // provedu ho a vratim vysledek
-        $obj = $this->executeQuery($q);
-        // pokud je null, tak vratim prazdne pole
-        if($obj == null){
+        if (!empty($orderByStatement)) {
+            $query .= " ORDER BY " . $orderByStatement;
+        }
+        try {
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (\PDOException $ex) {
+            echo "Nastala výjimka: " . $ex->getMessage();
             return [];
         }
-
-        return $obj->fetchAll();
     }
 
-    public function userLogin(string $login, string $heslo):bool {
-        // ziskam uzivatele z DB - primo overuju login i heslo
-        $where = "login='$login' AND heslo='$heslo'";
-        $user = $this->selectFromTable(TABLE_UZIVATEL, $where);
-        // ziskal jsem uzivatele
-        if(count($user)){
-            // ziskal - ulozim ID prvniho nalezeneho uzivatele do session
-            $this->mySession->addSession(self::KEY_USER, $user[0]['id_uzivatel']);
+//    public function userLogin(string $login, string $heslo):bool {
+//        // ziskam uzivatele z DB - primo overuju login i heslo
+//        $where = "login='$login' AND heslo='$heslo'";
+//        $user = $this->selectFromTable(TABLE_UZIVATEL, $where);
+//        // ziskal jsem uzivatele
+//        if(count($user)){
+//            // ziskal - ulozim ID prvniho nalezeneho uzivatele do session
+//            $this->mySession->addSession(self::KEY_USER, $user[0]['id_uzivatel']);
+//            return true;
+//        }
+//        // neziskal jsem uzivatele
+//        return false;
+//    }
+
+    public function userLogin(string $login, string $heslo): bool {
+        $query = "SELECT id_uzivatel FROM " . TABLE_UZIVATEL . " WHERE login = :login AND heslo = :heslo";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':login' => $login, ':heslo' => $heslo]);
+        $user = $stmt->fetch();
+        if ($user) {
+            $this->mySession->addSession(self::KEY_USER, $user['id_uzivatel']);
             return true;
         }
-        // neziskal jsem uzivatele
         return false;
     }
 
-    public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $id_kurz){
-        // slozim cast s hodnotami
-        $updateStatementWithValues = "login='$login', heslo='$heslo', jmeno='$jmeno', email='$email', id_pravo='$idPravo', id_kurz='$id_kurz'";
-        // podminka
-        $whereStatement = "id_uzivatel=$idUzivatel";
-        // provedu update
-        return $this->updateInTable(TABLE_UZIVATEL, $updateStatementWithValues, $whereStatement);
+//    public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $id_kurz){
+//        // slozim cast s hodnotami
+//        $updateStatementWithValues = "login='$login', heslo='$heslo', jmeno='$jmeno', email='$email', id_pravo='$idPravo', id_kurz='$id_kurz'";
+//        // podminka
+//        $whereStatement = "id_uzivatel=$idUzivatel";
+//        // provedu update
+//        return $this->updateInTable(TABLE_UZIVATEL, $updateStatementWithValues, $whereStatement);
+//    }
+
+    public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $idKurz): bool {
+        $query = "UPDATE " . TABLE_UZIVATEL . " 
+              SET login = :login, heslo = :heslo, jmeno = :jmeno, email = :email, id_pravo = :idPravo, id_kurz = :idKurz 
+              WHERE id_uzivatel = :idUzivatel";
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute([
+            ':login' => $login,
+            ':heslo' => $heslo,
+            ':jmeno' => $jmeno,
+            ':email' => $email,
+            ':idPravo' => $idPravo,
+            ':idKurz' => $idKurz,
+            ':idUzivatel' => $idUzivatel,
+        ]);
     }
+
 
     public function isUserLogged():bool {
         return $this->mySession->isSessionSet(self::KEY_USER);
