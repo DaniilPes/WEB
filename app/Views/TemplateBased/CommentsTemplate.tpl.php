@@ -5,6 +5,7 @@ global $tplData;
 <link rel="stylesheet" href="public/MyCss/comments.css">
 <link rel="stylesheet" href="public/MyCss/pre-main.css">
 <link rel="stylesheet" href="public/MyCss/Responzivita.css">
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
 <style>
     body {
@@ -51,7 +52,10 @@ global $tplData;
                     <span class="course"><strong>Kurz:</strong> <?= htmlspecialchars($comment['course']) ?></span>
                 </div>
                 <div class="comment-text">
-                    <?= htmlspecialchars($comment['text']) ?>
+<!--                    --><?php //= htmlspecialchars($comment['text']) ?>
+                    <?= $comment['text'] ?>
+<!--                    --><?php //= html_entity_decode($comment['text'], ENT_QUOTES | ENT_HTML5, 'UTF-8') ?>
+                    <?= htmlspecialchars_decode($comment['text'], ENT_QUOTES) ?>
                     <?php if (!empty($comment['image_path'])): ?>
                         <div class="comment-image">
                             <img src="<?= htmlspecialchars($comment['image_path']) ?>" alt="Comment Image">
@@ -71,7 +75,7 @@ global $tplData;
 
         <div class="new-comment">
             <form action="index.php?page=comments" method="POST" enctype="multipart/form-data">
-                <textarea name="comment_text" placeholder="Your comment..." required></textarea>
+                <textarea id="comment_text" name="comment_text" placeholder="Your comment..." required></textarea>
                 <input type="file" name="comment_image" accept="image/*">
                 <input type="submit" name="new_comment" value="Add comment">
             </form>
@@ -79,4 +83,10 @@ global $tplData;
     <?php else: ?>
         <p>Please, <a href="index.php?page=login">Log in</a>, to leave a comment.</p>
     <?php endif; ?>
+
+
 </div>
+<script>
+    // Инициируем CKEditor на нашем textarea
+    CKEDITOR.replace('comment_text');
+</script>

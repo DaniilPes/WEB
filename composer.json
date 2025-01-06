@@ -1,0 +1,21 @@
+{
+    "name": "dan/htdocs",
+    "description": "My Kivweb application",
+    "authors": [
+        {
+            "name": "Daniil"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ezyang/htmlpurifier": "^4.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "kivweb\\": "app/"
+        },
+        "classmap": [
+            "app/"
+        ]
+    }
+}

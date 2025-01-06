@@ -4,7 +4,8 @@
 
 // nactu funkci vlastniho autoloaderu trid
 // pozn.: protoze je pouzit autoloader trid, tak toto je (vyjma TemplateBased sablon) jediny soubor aplikace, ktery pouziva funkci require_once
-require_once("myAutoloader.inc.php");
+//require_once("myAutoloader.inc.php");
+require_once __DIR__ . '/vendor/autoload.php'; // путь зависит от структуры
 
 // nactu vlastni nastaveni webu
 require_once("settings.inc.php");

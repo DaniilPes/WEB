@@ -3,6 +3,9 @@ namespace kivweb\Controllers;
 
 use kivweb\Models\DatabaseModel;
 use kivweb\Models\FileHandler;
+use HTMLPurifier;
+use HTMLPurifier_Config;
+
 
 class CommentController implements IController {
     private $db;
@@ -18,7 +21,8 @@ class CommentController implements IController {
         foreach ($comments as $comment) {
             $result[] = [
                 'id_comment' => htmlspecialchars($comment['id_comment'], ENT_QUOTES),
-                'text' => htmlspecialchars($comment['text'], ENT_QUOTES),
+//                'text' => htmlspecialchars($comment['text'], ENT_QUOTES),
+                'text' => $comment['text'],
                 'image_path' => htmlspecialchars($comment['image_path'], ENT_QUOTES),
                 'autor_name' => htmlspecialchars($comment['autor_name'], ENT_QUOTES),
                 'right' => htmlspecialchars($comment['right'], ENT_QUOTES),
@@ -27,59 +31,6 @@ class CommentController implements IController {
         }
 
         return $result;
-    }
-
-    public function handleCommentActions() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Удаление комментария
-            if (isset($_POST['delete_comment'], $_POST['id_comment'])) {
-                $commentId = intval($_POST['id_comment']);
-                $result = $this->db->deleteCommentById($commentId);
-
-                if ($result) {
-                    $_SESSION['message'] = "Komentář byl úspěšně smazán.";
-                } else {
-                    $_SESSION['message'] = "Chyba: Komentář se nepodařilo smazat.";
-                }
-
-                header("Location: index.php?page=comments");
-                exit();
-            }
-
-            // Добавление нового комментария
-            if (isset($_POST['new_comment'], $_POST['comment_text'])) {
-                $user = $this->db->getLoggedUserData();
-                if (!$user) {
-                    $_SESSION['message'] = "Chyba: Musíte být přihlášeni k přidání komentáře.";
-                    header("Location: index.php?page=login");
-                    exit();
-                }
-
-                $text = htmlspecialchars($_POST['comment_text'], ENT_QUOTES);
-                $imagePath = null;
-
-                // Обработка изображения через FileHandler
-                if (!empty($_FILES['comment_image']['tmp_name'])) {
-                    $imagePath = FileHandler::processImageUpload($_FILES['comment_image']);
-                    if (!$imagePath) {
-                        $_SESSION['message'] = "Chyba: Obrázek se nepodařilo nahrát.";
-                        header("Location: index.php?page=comments");
-                        exit();
-                    }
-                }
-
-                $result = $this->db->addComment($user['id_uzivatel'], $text, $imagePath);
-
-                if ($result) {
-                    $_SESSION['message'] = "Komentář byl úspěšně přidán.";
-                } else {
-                    $_SESSION['message'] = "Chyba: Komentář se nepodařilo přidat.";
-                }
-
-                header("Location: index.php?page=comments");
-                exit();
-            }
-        }
     }
 
     private function processImageUpload(array $fileData): ?string {
@@ -110,6 +61,55 @@ class CommentController implements IController {
         return $tplData; // Возвращаем данные для шаблона
     }
 
+    public function handleCommentActions() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Добавление нового комментария
+            if (isset($_POST['new_comment'], $_POST['comment_text'])) {
+                $user = $this->db->getLoggedUserData();
+                if (!$user) {
+                    $_SESSION['message'] = "Chyba: Musíte být přihlášeni k přidání komentáře.";
+                    header("Location: index.php?page=login");
+                    exit();
+                }
+
+                // получаем «сырой» HTML-текст от CKEditor
+                $rawHtml = $_POST['comment_text'];
+
+                // 1) создаем конфигурацию Purifier
+                $config = HTMLPurifier_Config::createDefault();
+                // -- при необходимости добавить дополнительные настройки, например:
+                //    $config->set('HTML.Allowed', 'p,strong,em,ul,li,a[href],img[src]');
+                //    $config->set('AutoFormat.AutoParagraph', false);
+
+                // 2) создаем объект Purifier
+                $purifier = new HTMLPurifier($config);
+
+                // 3) «очищаем» HTML
+                $cleanHtml = $purifier->purify($rawHtml);
+
+                // Теперь $cleanHtml содержит «безопасный» HTML,
+                // в котором потенциально вредоносные теги/скрипты удалены.
+
+                // Далее можно сохранять «очищенный» HTML в базу
+                $text = $cleanHtml;
+
+                $imagePath = null;
+                // ... код обработки загрузки изображения ...
+
+                $result = $this->db->addComment($user['id_uzivatel'], $text, $imagePath);
+
+                if ($result) {
+                    $_SESSION['message'] = "Komentář byl úspěšně přidán.";
+                } else {
+                    $_SESSION['message'] = "Chyba: Komentář se nepodařilo přidat.";
+                }
+
+                header("Location: index.php?page=comments");
+                exit();
+            }
+        }
+    }
 
 
 
