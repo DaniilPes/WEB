@@ -63,6 +63,7 @@ class CommentController implements IController {
 
     public function handleCommentActions() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Добавление нового комментария
             if (isset($_POST['new_comment'], $_POST['comment_text'])) {
                 $user = $this->db->getLoggedUserData();
                 if (!$user) {
@@ -71,18 +72,16 @@ class CommentController implements IController {
                     exit();
                 }
 
-                // Проверяем входящие данные
+                // Получаем и обрабатываем данные
                 $rawHtml = $_POST['comment_text'];
 
-                // Настройка HTMLPurifier
                 $config = HTMLPurifier_Config::createDefault();
                 $config->set('HTML.Allowed', 'p,strong,em,a[href],img[src],ul,ol,li,br');
                 $config->set('Cache.SerializerPath', __DIR__ . '/../cache/htmlpurifier');
                 $purifier = new HTMLPurifier($config);
                 $cleanHtml = $purifier->purify($rawHtml);
 
-
-                // Сохраняем очищенный HTML
+                // Сохраняем очищенные данные
                 $text = $cleanHtml;
                 $imagePath = null;
 
@@ -100,8 +99,31 @@ class CommentController implements IController {
                 header("Location: index.php?page=comments");
                 exit();
             }
+
+            // Удаление комментария
+            if (isset($_POST['delete_comment'], $_POST['id_comment'])) {
+                $user = $this->db->getLoggedUserData();
+                if (!$user || $user['id_pravo'] >= 2) {
+                    $_SESSION['message'] = "Ошибка: У вас нет прав на удаление комментария.";
+                    header("Location: index.php?page=comments");
+                    exit();
+                }
+
+                $commentId = intval($_POST['id_comment']); // Приводим к числу для безопасности
+                $result = $this->db->deleteCommentById($commentId);
+
+                if ($result) {
+                    $_SESSION['message'] = "Комментарий успешно удалён.";
+                } else {
+                    $_SESSION['message'] = "Ошибка: Не удалось удалить комментарий.";
+                }
+
+                header("Location: index.php?page=comments");
+                exit();
+            }
         }
     }
+
 
 
 //    public function handleCommentActions() {
