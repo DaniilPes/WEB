@@ -63,46 +63,38 @@ class CommentController implements IController {
 
     public function handleCommentActions() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            // Добавление нового комментария
             if (isset($_POST['new_comment'], $_POST['comment_text'])) {
                 $user = $this->db->getLoggedUserData();
                 if (!$user) {
-                    $_SESSION['message'] = "Chyba: Musíte být přihlášeni k přidání komentáře.";
+                    $_SESSION['message'] = "Ошибка: Вы должны быть авторизованы, чтобы добавить комментарий.";
                     header("Location: index.php?page=login");
                     exit();
                 }
 
-                // получаем «сырой» HTML-текст от CKEditor
+                // Проверяем входящие данные
                 $rawHtml = $_POST['comment_text'];
 
-                // 1) создаем конфигурацию Purifier
+                // Настройка HTMLPurifier
                 $config = HTMLPurifier_Config::createDefault();
-                // -- при необходимости добавить дополнительные настройки, например:
-                //    $config->set('HTML.Allowed', 'p,strong,em,ul,li,a[href],img[src]');
-                //    $config->set('AutoFormat.AutoParagraph', false);
-
-                // 2) создаем объект Purifier
+                $config->set('HTML.Allowed', 'p,strong,em,a[href],img[src],ul,ol,li,br');
+                $config->set('Cache.SerializerPath', __DIR__ . '/../cache/htmlpurifier');
                 $purifier = new HTMLPurifier($config);
-
-                // 3) «очищаем» HTML
                 $cleanHtml = $purifier->purify($rawHtml);
 
-                // Теперь $cleanHtml содержит «безопасный» HTML,
-                // в котором потенциально вредоносные теги/скрипты удалены.
 
-                // Далее можно сохранять «очищенный» HTML в базу
+                // Сохраняем очищенный HTML
                 $text = $cleanHtml;
-
                 $imagePath = null;
-                // ... код обработки загрузки изображения ...
+
+                if (!empty($_FILES['comment_image']['tmp_name'])) {
+                    $imagePath = $this->processImageUpload($_FILES['comment_image']);
+                }
 
                 $result = $this->db->addComment($user['id_uzivatel'], $text, $imagePath);
-
                 if ($result) {
-                    $_SESSION['message'] = "Komentář byl úspěšně přidán.";
+                    $_SESSION['message'] = "Комментарий успешно добавлен.";
                 } else {
-                    $_SESSION['message'] = "Chyba: Komentář se nepodařilo přidat.";
+                    $_SESSION['message'] = "Ошибка: Не удалось добавить комментарий.";
                 }
 
                 header("Location: index.php?page=comments");
@@ -110,6 +102,53 @@ class CommentController implements IController {
             }
         }
     }
+
+
+//    public function handleCommentActions() {
+//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//            if (isset($_POST['new_comment'], $_POST['comment_text'])) {
+//                $user = $this->db->getLoggedUserData();
+//                if (!$user) {
+//                    $_SESSION['message'] = "Ошибка: Вы должны быть авторизованы, чтобы добавить комментарий.";
+//                    header("Location: index.php?page=login");
+//                    exit();
+//                }
+//
+//                // Проверяем входящие данные
+//                $rawHtml = $_POST['comment_text'];
+//                var_dump($rawHtml); // Отладка: проверьте сырые данные
+//                die();
+//
+//                // Настройка HTMLPurifier
+//                $config = HTMLPurifier_Config::createDefault();
+//                $config->set('HTML.Allowed', 'p,strong,em,a[href],img[src],ul,ol,li,br');
+//                $config->set('Cache.SerializerPath', __DIR__ . '/../cache/htmlpurifier');
+//                $purifier = new HTMLPurifier($config);
+//                $cleanHtml = $purifier->purify($rawHtml);
+//                var_dump($cleanHtml); // Отладка: проверьте очищенные данные
+//                die();
+//
+//                // Сохраняем очищенный HTML
+//                $text = $cleanHtml;
+//                $imagePath = null;
+//
+//                if (!empty($_FILES['comment_image']['tmp_name'])) {
+//                    $imagePath = $this->processImageUpload($_FILES['comment_image']);
+//                }
+//
+//                $result = $this->db->addComment($user['id_uzivatel'], $text, $imagePath);
+//                if ($result) {
+//                    $_SESSION['message'] = "Комментарий успешно добавлен.";
+//                } else {
+//                    $_SESSION['message'] = "Ошибка: Не удалось добавить комментарий.";
+//                }
+//
+//                header("Location: index.php?page=comments");
+//                exit();
+//            }
+//        }
+//    }
+
 
 
 

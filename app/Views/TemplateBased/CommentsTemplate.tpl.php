@@ -55,7 +55,7 @@ global $tplData;
 <!--                    --><?php //= htmlspecialchars($comment['text']) ?>
                     <?= $comment['text'] ?>
 <!--                    --><?php //= html_entity_decode($comment['text'], ENT_QUOTES | ENT_HTML5, 'UTF-8') ?>
-                    <?= htmlspecialchars_decode($comment['text'], ENT_QUOTES) ?>
+<!--                    --><?php //= htmlspecialchars_decode($comment['text'], ENT_QUOTES) ?>
                     <?php if (!empty($comment['image_path'])): ?>
                         <div class="comment-image">
                             <img src="<?= htmlspecialchars($comment['image_path']) ?>" alt="Comment Image">
