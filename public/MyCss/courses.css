@@ -162,7 +162,9 @@ body {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    /*background-color: #fefefe;*/
+    color: #aaa;
+    background-color: #232A42FF;
     margin: 5% auto; /* Уменьшено для вертикального центрирования */
     padding: 20px;
     border: 1px solid #888;
@@ -175,7 +177,7 @@ body {
 }
 
 .close {
-    color: #aaa;
+    color: #a9b7dc;
     float: right;
     font-size: 28px;
     font-weight: bold;

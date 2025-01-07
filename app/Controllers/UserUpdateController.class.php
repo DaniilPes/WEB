@@ -60,12 +60,6 @@ class UserUpdateController implements IController {
 
         return $tplData;
     }
-
-//    public function show(string $pageTitle): array{
-//        $this->handleRequest();
-////        $tplData = [];
-//        $tplData['title'] = $pageTitle;
-//        return $tplData;
-//    }
+    
 }
 ?>

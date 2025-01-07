@@ -15,7 +15,7 @@ class CommentController implements IController {
     }
 
     public function handleComments(): array {
-        $comments = $this->db->getAllComments(); // getAllComments уже использует защищенные запросы
+        $comments = $this->db->getAllComments(); // getAllComments save
         $result = [];
 
         foreach ($comments as $comment) {
@@ -67,7 +67,7 @@ class CommentController implements IController {
             if (isset($_POST['new_comment'], $_POST['comment_text'])) {
                 $user = $this->db->getLoggedUserData();
                 if (!$user) {
-                    $_SESSION['message'] = "Ошибка: Вы должны быть авторизованы, чтобы добавить комментарий.";
+                    $_SESSION['message'] = "ERROR: Log in to add a comment.";
                     header("Location: index.php?page=login");
                     exit();
                 }
@@ -91,9 +91,9 @@ class CommentController implements IController {
 
                 $result = $this->db->addComment($user['id_uzivatel'], $text, $imagePath);
                 if ($result) {
-                    $_SESSION['message'] = "Комментарий успешно добавлен.";
+                    $_SESSION['message'] = "Comment is added.";
                 } else {
-                    $_SESSION['message'] = "Ошибка: Не удалось добавить комментарий.";
+                    $_SESSION['message'] = "Error: cannot add a comment.";
                 }
 
                 header("Location: index.php?page=comments");
@@ -104,7 +104,7 @@ class CommentController implements IController {
             if (isset($_POST['delete_comment'], $_POST['id_comment'])) {
                 $user = $this->db->getLoggedUserData();
                 if (!$user || $user['id_pravo'] >= 2) {
-                    $_SESSION['message'] = "Ошибка: У вас нет прав на удаление комментария.";
+                    $_SESSION['message'] = "Error: You have no permissions to delete a comment.";
                     header("Location: index.php?page=comments");
                     exit();
                 }
@@ -113,9 +113,9 @@ class CommentController implements IController {
                 $result = $this->db->deleteCommentById($commentId);
 
                 if ($result) {
-                    $_SESSION['message'] = "Комментарий успешно удалён.";
+                    $_SESSION['message'] = "Succesfully deleted.";
                 } else {
-                    $_SESSION['message'] = "Ошибка: Не удалось удалить комментарий.";
+                    $_SESSION['message'] = "Error: cannot add a comment.";
                 }
 
                 header("Location: index.php?page=comments");
@@ -123,56 +123,6 @@ class CommentController implements IController {
             }
         }
     }
-
-
-
-//    public function handleCommentActions() {
-//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//            if (isset($_POST['new_comment'], $_POST['comment_text'])) {
-//                $user = $this->db->getLoggedUserData();
-//                if (!$user) {
-//                    $_SESSION['message'] = "Ошибка: Вы должны быть авторизованы, чтобы добавить комментарий.";
-//                    header("Location: index.php?page=login");
-//                    exit();
-//                }
-//
-//                // Проверяем входящие данные
-//                $rawHtml = $_POST['comment_text'];
-//                var_dump($rawHtml); // Отладка: проверьте сырые данные
-//                die();
-//
-//                // Настройка HTMLPurifier
-//                $config = HTMLPurifier_Config::createDefault();
-//                $config->set('HTML.Allowed', 'p,strong,em,a[href],img[src],ul,ol,li,br');
-//                $config->set('Cache.SerializerPath', __DIR__ . '/../cache/htmlpurifier');
-//                $purifier = new HTMLPurifier($config);
-//                $cleanHtml = $purifier->purify($rawHtml);
-//                var_dump($cleanHtml); // Отладка: проверьте очищенные данные
-//                die();
-//
-//                // Сохраняем очищенный HTML
-//                $text = $cleanHtml;
-//                $imagePath = null;
-//
-//                if (!empty($_FILES['comment_image']['tmp_name'])) {
-//                    $imagePath = $this->processImageUpload($_FILES['comment_image']);
-//                }
-//
-//                $result = $this->db->addComment($user['id_uzivatel'], $text, $imagePath);
-//                if ($result) {
-//                    $_SESSION['message'] = "Комментарий успешно добавлен.";
-//                } else {
-//                    $_SESSION['message'] = "Ошибка: Не удалось добавить комментарий.";
-//                }
-//
-//                header("Location: index.php?page=comments");
-//                exit();
-//            }
-//        }
-//    }
-
-
-
 
 }
 ?>

@@ -87,7 +87,8 @@ class TemplateBasics implements IView {
                     $login = $this->db->getLogin($user['id_uzivatel']);
 
                     if (isset($login['login'])) {
-                        echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">' . htmlspecialchars($login['login']) . '</a>';
+//                        echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">' . htmlspecialchars($login['login']) . '</a>';
+                        echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">' . 'me' . '</a>';
                     }
                 } else {
                     echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">Login</a>';

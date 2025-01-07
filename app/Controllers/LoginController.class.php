@@ -25,7 +25,7 @@ class LoginController implements IController {
                 header("Location: index.php?page=login");
                 exit;
             } else {
-                return ['error' => 'Неверный логин или пароль.'];
+                return ['error' => 'Wrong password or login.'];
             }
         }
 
@@ -54,9 +54,9 @@ class LoginController implements IController {
             $userCourse = $this->db->getCourseById($user['id_kurz']);
 
             $tplData['user'] = $user;
-            $tplData['userRightName'] = $userRight['jemno'] ?? '*Neznámé*';
+            $tplData['userRightName'] = $userRight['jemno'] ?? '*Unknown*';
             $tplData['userRightWeight'] = $user['id_pravo'];
-            $tplData['userCourse'] = $userCourse['nazev'] ?? '*Neznámé*';
+            $tplData['userCourse'] = $userCourse['nazev'] ?? '*Unknown*';
         }
 
         // Соединяем ошибки с данными для шаблона

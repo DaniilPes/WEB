@@ -37,7 +37,7 @@ global $tplData;
                         </div>
                     <?php endif; ?>
                 </div>
-                <?php if ($tplData['user']['id_pravo'] < 2): ?>
+                <?php if ($tplData['user']['id_pravo'] <= 2): ?>
                     <div class="comment-actions">
                         <form action="index.php?page=comments" method="POST">
                             <input type="hidden" name="id_comment" value="<?= htmlspecialchars($comment['id_comment']) ?>">
