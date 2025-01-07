@@ -7,9 +7,9 @@ global $tplData;
     <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
     <title>Code Academy</title>
 
-    <link rel="stylesheet" href="public/MyCss/style-2.css">
-    <link rel="stylesheet" href="public/MyCss/style-1.css">
 
+    <link rel="stylesheet" href="public/MyCss/style-1.css">
+    <link rel="stylesheet" href="public/MyCss/style-2.css">
     <link rel="stylesheet" href="public/MyCss/responzivita2.css">
 
     <script src ="public/javaScript/script.js"></script>

@@ -32,8 +32,7 @@ class TemplateBasics implements IView {
      * @param array $templateData       Data stranky.
      * @param string $pageType          Typ vypisovane stranky.
      */
-    public function printOutput(array $templateData, string $pageType = self::PAGE_INTRODUCTION)
-    {
+    public function printOutput(array $templateData, string $pageType = self::PAGE_INTRODUCTION){
 
         //// vypis hlavicky
         if($pageType == self::PAGE_COURSE_TEMPLATE || $pageType == self::PAGE_INTRODUCTION

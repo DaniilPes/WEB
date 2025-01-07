@@ -48,18 +48,18 @@ class UserUpdateController implements IController {
                 $res = $this->db->updateUser($currentData['id_uzivatel'], $currentData['login'], $heslo, $jmeno, $email, $pravo, $kurz);
 
                 if ($res) {
-                    $tplData['message'] = "OK: Osobní údaje byly úspěšně upraveny.";
+                    $tplData['message'] = "OK: personal data was updated.";
                     $tplData['userData'] = $this->db->getLoggedUserData();
                 } else {
-                    $tplData['message'] = "ERROR: Úprava údajů se nezdařila.";
+                    $tplData['message'] = "ERROR. Cannot change user data";
                 }
             } else {
-                $tplData['message'] = "ERROR: Nesprávné současné heslo.";
+                $tplData['message'] = "ERROR: incorrect password.";
             }
         }
 
         return $tplData;
     }
-    
+
 }
 ?>

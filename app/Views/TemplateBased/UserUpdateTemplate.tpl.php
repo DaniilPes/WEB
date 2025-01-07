@@ -1,23 +1,28 @@
 <?php
 global $tplData;
 ?>
-
+<body class="choosingForm">
 <?php if (!$tplData['isLogged']): ?>
     <div>
         <b>Only logged-in users can edit personal information.</b>
     </div>
 <?php else: ?>
-    <?php if (!empty($tplData['message'])): ?>
-        <div class="message">
-            <?= htmlspecialchars($tplData['message']) ?>
-        </div>
-    <?php endif; ?>
+
     <link rel="stylesheet" href="public/MyCss/style-1.css">
     <script src="public/script.js"></script>
-    <h2>Personal Information</h2>
-    <form action="" method="POST" autocomplete="off">
-        <input type="hidden" name="id_uzivatel" value="<?= $tplData['userData']['id_uzivatel'] ?>">
+<!--    <h2>Personal Information</h2>-->
 
+    <form action="" method="POST" autocomplete="off">
+        <br>
+        <input type="hidden" name="id_uzivatel" value="<?= $tplData['userData']['id_uzivatel'] ?>">
+        <?php if (!empty($tplData['message'])): ?>
+<!--            <div class="message">-->
+<!--                --><?php //= htmlspecialchars($tplData['message']) ?>
+<!--            </div>-->
+            <div class="<?= strpos($tplData['message'], 'ERROR') === false ? 'success-message' : 'error-message' ?>">
+                <?= htmlspecialchars($tplData['message'], ENT_QUOTES) ?>
+            </div>
+        <?php endif; ?>
         <label>Login: <?= htmlspecialchars($tplData['userData']['login']) ?></label>
 
         <label for="password">New Password:</label>
@@ -58,4 +63,5 @@ global $tplData;
         <input class="button" type="submit" name="potvrzeni" value="Update Personal Information">
         <a href="index.php?page=login" class="button">Back</a>
     </form>
+</body>
 <?php endif; ?>

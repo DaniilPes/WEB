@@ -7,6 +7,9 @@ body {
     width: 100%;
     background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
     font-family: Bahnschrift, serif;
+    /*justify-content: center; !* Центрируем по горизонтали *!*/
+        /*align-items: center; !* Центрируем по вертикали *!*/
+    /*display: flex;*/
 }
 
 /* Стили для логотипа */
@@ -14,6 +17,14 @@ body {
     font-family: Bahnschrift, serif;
     font-size: 40px;
     color: #e6e6e6;
+}
+
+.error-message{
+    color: #bb0b0b;
+}
+
+.succes-message{
+    color: #45a049;
 }
 
 /* Стили для формы ввода */
@@ -49,7 +60,9 @@ form {
     flex-direction: column;
     min-width: 400px;
     max-width: 400px;
-    margin: auto;
+    /*margin: auto;*/
+
+
 }
 
 /* Стили для меток формы */
@@ -180,4 +193,15 @@ b {
         width: 90%; /* Увеличивает ширину для устройств с шириной экрана до 768px */
         margin: 10px 0; /* Уменьшает внешние отступы для лучшего размещения элементов */
     }
+}
+
+.choosingForm{
+    /*justify-content: center; */
+    /*align-content: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    /*display: flex;*/
+
 }

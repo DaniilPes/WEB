@@ -2,10 +2,13 @@
 global $tplData;
 ?>
 <link rel="stylesheet" href="public/MyCss/style-1.css">
-
+<body class="choosingForm">
 <?php if (!isset($tplData['user'])): ?>
-    <!-- Форма для входа -->
-    <h2>Logged user</h2>
+<!--    <h2>Logged user</h2>-->
+    <?php if (isset($tplData['error'])): ?>
+<!--        <div class="error">--><?php //= htmlspecialchars($tplData['error'], ENT_QUOTES) ?><!--</div>-->
+            <h2><?= htmlspecialchars($tplData['error'], ENT_QUOTES) ?></h2>
+    <?php endif; ?>
     <div id="inputForm" class="center">
         <form action="index.php?page=login" method="POST">
             <div id="logo" class="center">
@@ -25,28 +28,31 @@ global $tplData;
             <a href="index.php?page=registration" class="button">REGISTRATION</a>
         </form>
 
-        <?php if (isset($tplData['error'])): ?>
-            <div class="error"><?= htmlspecialchars($tplData['error'], ENT_QUOTES) ?></div>
-        <?php endif; ?>
+<!--        --><?php //if (isset($tplData['error'])): ?>
+<!--            <div class="error">--><?php //= htmlspecialchars($tplData['error'], ENT_QUOTES) ?><!--</div>-->
+<!--        --><?php //endif; ?>
     </div>
 <?php else: ?>
     <!-- Данные для авторизованных пользователей -->
     <br>
-    <h2 class="center">Logged user</h2>
-    <b class="center">Login: <?= htmlspecialchars($tplData['user']['login'], ENT_QUOTES) ?></b><br>
-    <b class="center">Name: <?= htmlspecialchars($tplData['user']['jmeno'], ENT_QUOTES) ?></b><br>
-    <b class="center">E-mail: <?= htmlspecialchars($tplData['user']['email'], ENT_QUOTES) ?></b><br>
-    <b class="center">Right: <?= htmlspecialchars($tplData['userRightName'], ENT_QUOTES) ?></b><br>
-    <b class="center">Course: <?= htmlspecialchars($tplData['userCourse'], ENT_QUOTES) ?></b>
-    <br><br>
+    <div class="choosingForm">
+        <h2 class="center">Logged user</h2>
+        <b class="center">Login: <?= htmlspecialchars($tplData['user']['login'], ENT_QUOTES) ?></b><br>
+        <b class="center">Name: <?= htmlspecialchars($tplData['user']['jmeno'], ENT_QUOTES) ?></b><br>
+        <b class="center">E-mail: <?= htmlspecialchars($tplData['user']['email'], ENT_QUOTES) ?></b><br>
+        <b class="center">Right: <?= htmlspecialchars($tplData['userRightName'], ENT_QUOTES) ?></b><br>
+        <b class="center">Course: <?= htmlspecialchars($tplData['userCourse'], ENT_QUOTES) ?></b>
+        <br><br>
 
-    <form action="index.php?page=login" method="POST">
-        <a href="index.php?page=user_update" class="button">Change</a>
-        <input type="hidden" name="action" value="logout">
-        <input class="button" type="submit" value="Odhlásit">
-        <?php if ($tplData['userRightWeight'] < 2): ?>
-            <a href="index.php?page=management" class="button">Modify users</a>
-        <?php endif; ?>
-        <a href="index.php?page=main" class="button">Back</a>
-    </form>
+        <form action="index.php?page=login" method="POST">
+            <a href="index.php?page=user_update" class="button">Change</a>
+            <input type="hidden" name="action" value="logout">
+            <input class="button" type="submit" value="Log out">
+            <?php if ($tplData['userRightWeight'] < 2): ?>
+                <a href="index.php?page=management" class="button">Modify users</a>
+            <?php endif; ?>
+            <a href="index.php?page=main" class="button">Back</a>
+        </form>
+    </div>
+</body>
 <?php endif; ?>
