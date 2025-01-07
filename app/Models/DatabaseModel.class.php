@@ -121,7 +121,14 @@ class DatabaseModel {
     }
 
     public function addNewUser(string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $kurz): bool {
-        $query = "INSERT INTO " . TABLE_UZIVATEL . " (login, heslo, jmeno, email, id_pravo, id_kurz) 
+//        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//            throw new \InvalidArgumentException("Invalid email format.");
+//        }
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $login)) {
+            throw new \InvalidArgumentException("Invalid login format.");
+        }
+
+        $query = "INSERT INTO " . TABLE_UZIVATEL . " (login, heslo, jmeno, email, id_pravo, id_kurz)
               VALUES (:login, :heslo, :jmeno, :email, :idPravo, :kurz)";
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute([
@@ -147,7 +154,7 @@ class DatabaseModel {
             throw new \InvalidArgumentException("Invalid login format.");
         }
 
-        $query = "SELECT * FROM users WHERE login = :login";
+        $query = "SELECT * FROM " . TABLE_UZIVATEL . " WHERE login = :login";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':login', $login, \PDO::PARAM_STR);
         $stmt->execute();
@@ -155,7 +162,6 @@ class DatabaseModel {
         $result = $stmt->fetch();
         return $result ?: null; // Возвращает null, если пользователь не найден
     }
-
 
     public function getRightById(int $id){
         // ziskam pravo dle ID
@@ -252,28 +258,6 @@ class DatabaseModel {
 
     public function isUserLogged():bool {
         return $this->mySession->isSessionSet(self::KEY_USER);
-//        return isset($_SESSION['user']);
-    }
-
-    public function updateInTable(string $tableName, string $updateStatementWithValues, string $whereStatement):bool {
-        // slozim dotaz
-        $q = "UPDATE $tableName SET $updateStatementWithValues WHERE $whereStatement";
-        // provedu ho a vratim vysledek
-        $obj = $this->executeQuery($q);
-        // pokud ($obj == null), tak vratim false
-        return ($obj != null);
-    }
-
-    private function executeQuery(string $dotaz){
-        // vykonam dotaz
-        try {
-            $res = $this->pdo->query($dotaz);
-            return $res;
-        } catch (\PDOException $ex){
-            echo "Nastala výjimka: ". $ex->getCode() ."<br>"
-                ."Text: ". $ex->getMessage();
-            return null;
-        }
     }
 
 }
