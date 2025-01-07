@@ -18,11 +18,11 @@ global $tplData;
             <input type="password" id="password" name="heslo" required>
             <input type="hidden" name="action" value="login">
 
-            <input class="button" type="submit" name="potvrzeni" value="Prihlasit">
+            <input class="button" type="submit" name="potvrzeni" value="Sign in">
 
-            <label class="center"> nebo </label>
+            <label class="center"> or </label>
 
-            <a href="index.php?page=registrace" class="button">REGISTRATION</a>
+            <a href="index.php?page=registration" class="button">REGISTRATION</a>
         </form>
 
         <?php if (isset($tplData['error'])): ?>

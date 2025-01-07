@@ -1,55 +1,55 @@
-/* style.css */
+/* Основные стили */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /*background-color: #f4f4f4;*/
-    color: #333;
     background: radial-gradient(
             farthest-corner at 100px 300px,
             #232a42 10%,
             #0e111a 90%
     );
+    color: #fff;
 }
 
 .container {
-    width: 80%;
+    display: table; /* Используем table, чтобы контейнер подстраивался под содержимое */
+    width: auto; /* Убираем фиксированную ширину */
+    max-width: 90%; /* Ограничиваем максимальную ширину */
     margin: 20px auto;
-    padding: 20px;
+    /*padding: 20px;*/
     background-color: #fff;
+    color: #333;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    padding: 20px 10px;
 }
 
 h2 {
     text-align: center;
-    color: #333;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
+    min-width: 600px; /* Минимальная ширина для сохранения структуры */
+    /*border: 2px solid #232A42FF;*/
 }
 
 th, td {
     padding: 12px;
+    color: #232A42FF;
     text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: nowrap; /* Запрещаем перенос текста */
+    border: 1px solid #ccc;
 }
 
 th {
-    background-color: #f4f4f4;
+    color: #232A42FF;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    color: #232A42FF;
 }
 
 button, input[type="submit"] {
@@ -58,10 +58,7 @@ button, input[type="submit"] {
     border: none;
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 8px;
 }
@@ -74,38 +71,25 @@ select {
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
-    width: 100%;
 }
 
-td.login, td.name, td.email {
-    max-width: 100px;
+/* Стили для респонсивности */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Уменьшаем размер текста */
+    }
+
+    th, td {
+        padding: 8px; /* Уменьшаем внутренние отступы */
+    }
 }
 
-td.login:hover, td.name:hover, td.email:hover {
-    overflow: visible;
-    white-space: normal;
-}
+@media (max-width: 500px) {
+    table {
+        font-size: 12px; /* Еще больше уменьшаем размер текста */
+    }
 
-td.pravo, td.kurz{
-    width: 18%;
-    min-width: 15%;
-    max-width: 20%;
-}
-
-td.akce{
-    width: 10%;
-    min-width: 10%;
-    max-width: 15%;
-}
-
-table td.pravo select,
-table td.kurz select {
-    width: auto;
-    max-width: 100%;
-}
-
-table td.akce form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    th, td {
+        padding: 5px; /* Минимальные отступы для компактного отображения */
+    }
 }

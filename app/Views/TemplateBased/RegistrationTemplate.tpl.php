@@ -12,7 +12,7 @@ global $tplData;
 
 <?php if (!$tplData['isLogged']): ?>
     <h2>Registration form</h2>
-    <form action="index.php?page=registrace" method="POST" oninput="x.value=(pas1.value==pas2.value)?'OK':'Passwords are different'">
+    <form action="index.php?page=registration" method="POST" oninput="x.value=(pas1.value==pas2.value)?'OK':'Passwords are different'">
         <div id="logo" class="center">
             <img src="public/images/codeChar.png" width="100" alt="Code Academy Logo">
             codeAcademy
@@ -43,7 +43,7 @@ global $tplData;
         </select>
 
         <input class="button" type="submit" name="potvrzeni" value="Register">
-        <label class="center">или</label>
+        <label class="center">or</label>
         <a href="index.php?page=login" class="btn" id="linkReg">Continue</a>
     </form>
 <?php else: ?>

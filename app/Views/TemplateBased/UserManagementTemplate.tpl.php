@@ -15,7 +15,7 @@ global $tplData;
         <tr>
             <th>ID</th>
             <th>Login</th>
-            <th>Jméno</th>
+            <th>Name</th>
             <th>E-mail</th>
             <th>Rights</th>
             <th>Course</th>
