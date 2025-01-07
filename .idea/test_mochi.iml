@@ -5,5 +5,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ckeditor" level="application" />
+    <orderEntry type="library" name="be98670a76" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="@popperjs/core" level="application" />
   </component>
 </module>

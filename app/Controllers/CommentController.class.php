@@ -76,7 +76,7 @@ class CommentController implements IController {
                 $rawHtml = $_POST['comment_text'];
 
                 $config = HTMLPurifier_Config::createDefault();
-                $config->set('HTML.Allowed', 'p,strong,em,a[href],img[src],ul,ol,li,br');
+                $config->set('HTML.Allowed', 'p,strong,em,a[href],img[src],ul,ol,li,br,s,del');
                 $config->set('Cache.SerializerPath', __DIR__ . '/../cache/htmlpurifier');
                 $purifier = new HTMLPurifier($config);
                 $cleanHtml = $purifier->purify($rawHtml);

@@ -7,31 +7,6 @@ global $tplData;
 <link rel="stylesheet" href="public/MyCss/Responzivita.css">
 <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
-<style>
-    body {
-        background: radial-gradient(
-                farthest-corner at 100px 300px,
-                #232a42 10%,
-                #0e111a 90%
-        );
-        margin: 0;
-        padding: 0;
-        border: 0;
-        height: 100%;
-    }
-    .divNav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #0e111a;
-        background-image: linear-gradient(
-                to right,
-                rgba(145,30,30,0.9),
-                rgba(30,30,165,0.8));
-        height: 10vh;
-    }
-</style>
-
 <div class="comments-section">
     <?php if ($tplData['isLogged']): ?>
         <?php foreach ($tplData['comments'] as $comment):

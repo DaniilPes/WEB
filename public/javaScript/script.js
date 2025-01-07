@@ -4,8 +4,3 @@ hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("clicked");
 });
 
-
-
-
-
-
