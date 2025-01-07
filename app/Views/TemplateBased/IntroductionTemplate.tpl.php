@@ -85,10 +85,10 @@ global $tplData;
             <hr/>
             Naučte se vytvářet moderní webové aplikace pomocí HTML, CSS a JavaScriptu.
             <hr/>
-            <span>Cena: 299 $</span>
+            <span>Price: 299 $</span>
         </div>
         <div class="priceItem">
-            <strong>Programování v C</strong>
+            <strong>C courses</strong>
             <hr/>
             Základy programování v C: od syntaxe po práci s pamětí a datovými strukturami.
             <span>Cena: 249 $</span>

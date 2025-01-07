@@ -5,7 +5,7 @@ global $tplData;
 
 <?php if (!isset($tplData['user'])): ?>
     <!-- Форма для входа -->
-    <h2>Přihlášení uživatele</h2>
+    <h2>Logged user</h2>
     <div id="inputForm" class="center">
         <form action="index.php?page=login" method="POST">
             <div id="logo" class="center">
@@ -22,7 +22,7 @@ global $tplData;
 
             <label class="center"> nebo </label>
 
-            <a href="index.php?page=registrace" class="button">REGISTRACE</a>
+            <a href="index.php?page=registrace" class="button">REGISTRATION</a>
         </form>
 
         <?php if (isset($tplData['error'])): ?>
@@ -32,21 +32,21 @@ global $tplData;
 <?php else: ?>
     <!-- Данные для авторизованных пользователей -->
     <br>
-    <h2 class="center">Přihlášený uživatel</h2>
+    <h2 class="center">Logged user</h2>
     <b class="center">Login: <?= htmlspecialchars($tplData['user']['login'], ENT_QUOTES) ?></b><br>
-    <b class="center">Jméno: <?= htmlspecialchars($tplData['user']['jmeno'], ENT_QUOTES) ?></b><br>
+    <b class="center">Name: <?= htmlspecialchars($tplData['user']['jmeno'], ENT_QUOTES) ?></b><br>
     <b class="center">E-mail: <?= htmlspecialchars($tplData['user']['email'], ENT_QUOTES) ?></b><br>
-    <b class="center">Právo: <?= htmlspecialchars($tplData['userRightName'], ENT_QUOTES) ?></b><br>
-    <b class="center">Kurz: <?= htmlspecialchars($tplData['userCourse'], ENT_QUOTES) ?></b>
+    <b class="center">Right: <?= htmlspecialchars($tplData['userRightName'], ENT_QUOTES) ?></b><br>
+    <b class="center">Course: <?= htmlspecialchars($tplData['userCourse'], ENT_QUOTES) ?></b>
     <br><br>
 
     <form action="index.php?page=login" method="POST">
-        <a href="index.php?page=user_update" class="button">Změna</a>
+        <a href="index.php?page=user_update" class="button">Change</a>
         <input type="hidden" name="action" value="logout">
         <input class="button" type="submit" value="Odhlásit">
         <?php if ($tplData['userRightWeight'] < 2): ?>
-            <a href="index.php?page=management" class="button">Správa uživatelů</a>
+            <a href="index.php?page=management" class="button">Modify users</a>
         <?php endif; ?>
-        <a href="index.php?page=main" class="button">Zpět</a>
+        <a href="index.php?page=main" class="button">Back</a>
     </form>
 <?php endif; ?>

@@ -11,29 +11,29 @@ global $tplData;
 <?php endif; ?>
 
 <?php if (!$tplData['isLogged']): ?>
-    <h2>Регистрационная форма</h2>
-    <form action="index.php?page=registrace" method="POST" oninput="x.value=(pas1.value==pas2.value)?'OK':'Пароли не совпадают'">
+    <h2>Registration form</h2>
+    <form action="index.php?page=registrace" method="POST" oninput="x.value=(pas1.value==pas2.value)?'OK':'Passwords are different'">
         <div id="logo" class="center">
             <img src="public/images/codeChar.png" width="100" alt="Code Academy Logo">
             codeAcademy
         </div>
 
-        <label for="login">Логин:</label>
+        <label for="login">Login:</label>
         <input type="text" id="login" name="login" required>
 
-        <label for="password">Пароль:</label>
+        <label for="password">Password:</label>
         <input type="password" id="pas1" name="heslo" required>
 
-        <label for="password2">Подтвердите пароль:</label>
+        <label for="password2">Password 2:</label>
         <input type="password" id="pas2" name="heslo2" required>
 
-        <label for="jmeno">Имя:</label>
+        <label for="jmeno">Name:</label>
         <input type="text" id="jmeno" name="jmeno" required>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
-        <label for="kurz">Курс:</label>
+        <label for="kurz">Course:</label>
         <select name="kurz" style="height: 35px">
             <?php foreach ($tplData['courses'] as $course): ?>
                 <option value="<?= htmlspecialchars($course['kurz_id'], ENT_QUOTES) ?>">
@@ -42,12 +42,12 @@ global $tplData;
             <?php endforeach; ?>
         </select>
 
-        <input class="button" type="submit" name="potvrzeni" value="Зарегистрироваться">
+        <input class="button" type="submit" name="potvrzeni" value="Register">
         <label class="center">или</label>
-        <a href="index.php?page=login" class="btn" id="linkReg">Войти</a>
+        <a href="index.php?page=login" class="btn" id="linkReg">Continue</a>
     </form>
 <?php else: ?>
     <div>
-        <b>Вы уже авторизованы. Регистрация невозможна.</b>
+        <b>Already logged in. Registration is impossible.</b>
     </div>
 <?php endif; ?>
