@@ -10,18 +10,6 @@ body {
     height: 100%;
 }
 
-.divNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #0e111a;
-    background-image: linear-gradient(
-            to right,
-            rgba(145,30,30,0.9),
-            rgba(30,30,165,0.8));
-    height: 10vh;
-}
-
 .comment-image img {
     /*max-width: 800px;*/
     height: auto; /* Сохраняем пропорции */

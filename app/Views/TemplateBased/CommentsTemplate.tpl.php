@@ -6,7 +6,6 @@ global $tplData;
 <link rel="stylesheet" href="public/MyCss/pre-main.css">
 <link rel="stylesheet" href="public/MyCss/Responzivita.css">
 <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
-
 <div class="comments-section">
     <?php if ($tplData['isLogged']): ?>
         <?php foreach ($tplData['comments'] as $comment):

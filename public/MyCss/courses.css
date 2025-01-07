@@ -1,4 +1,3 @@
-/* Общие стили */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,9 +6,7 @@ body {
 }
 
 .con {
-    display: flex;
     flex-direction: column;
-    cursor: pointer;
 }
 
 .bar1, .bar2, .bar3 {
@@ -18,19 +15,6 @@ body {
     background-color: #fff;
     margin: 6px 0;
     transition: 0.4s;
-}
-
-/* Стили для секции курсов */
-.courses-section {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
-    background-image: radial-gradient(
-            farthest-corner at 170vh 150vh,
-            #232a42 20%,
-            #0e111a 90%
-
-    );
 }
 
 .courses-section h2 {
@@ -103,9 +87,6 @@ body {
 
 }
 
-
-
-/* Стили для контактной информации */
 #contact {
     background-color: #333;
     color: #fff;
@@ -136,10 +117,9 @@ body {
     color: #e76f51;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .nav {
-        flex-direction: column;
+        flex-direction: row;
     }
     .course-card {
         width: 90%;
@@ -149,57 +129,8 @@ body {
     }
 }
 
-.nav {
-    display: flex;
-}
-
-.divNav {
-    /*position: relative;*/
-    /*top: -8px;*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background-color: #0e111a;
-    background-image: linear-gradient(
-            to right,
-            rgba(145,30,30,0.9),
-            rgba(30,30,165,0.8));
-    height: 10vh;
-
-}
-
 .NI{
     text-decoration: none;
-}
-
-
-.con {
-    /*position: absolute;*/
-    margin: 30px;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
 }
 
 .close {
@@ -260,5 +191,48 @@ body {
 video {
     max-width: 100%; /* Ограничение ширины видео */
     height: auto; /* Автоматическая высота */
+}
+
+.courses-section {
+    display: flex; /* Используем Flexbox */
+    flex-direction: column; /* Оставляем вертикальное направление для маленьких экранов */
+    align-items: center; /* Центрирование содержимого по горизонтали */
+    background-color: #fff;
+    text-align: center;
+    background-image: radial-gradient(
+            farthest-corner at 170vh 150vh,
+            #232a42 20%,
+            #0e111a 90%
+    );
+    padding: 40px 20px;
+    gap: 20px; /* Расстояние между элементами */
+}
+
+.courses-section h2 {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.course-card {
+    display: flex; /* Включаем Flexbox для карточек */
+    flex-direction: column; /* Элементы внутри карточки располагаются вертикально */
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #232A42FF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .courses-section {
+        flex-direction: row; /* Переключаем направление на горизонтальное для больших экранов */
+        justify-content: center; /* Центрируем карточки */
+        flex-wrap: wrap; /* Оборачиваем карточки, если не хватает места */
+    }
 }
 

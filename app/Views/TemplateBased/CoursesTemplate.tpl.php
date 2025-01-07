@@ -36,10 +36,10 @@
     </div>
 </div>
 
-<!-- Модальное окно -->
+
 <div id="courseModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close">Back</span>
         <h3 id="modalCourseTitle">Course Title</h3>
         <p id="modalCourseDescription">Course description goes here...</p>
         <video id="modalCourseVideo" controls autoplay muted>
