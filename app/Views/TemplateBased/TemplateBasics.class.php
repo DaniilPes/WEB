@@ -69,9 +69,9 @@ class TemplateBasics implements IView {
         ?>
         <div class="divNav">
             <div class="con" onclick="myFunction(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
+<!--                <div class="bar1"></div>-->
+<!--                <div class="bar2"></div>-->
+<!--                <div class="bar3"></div>-->
             </div>
             <nav class="nav">
                 <a style="text-decoration:none" href="index.php?page=start" class="NI">Home</a>

@@ -22,20 +22,43 @@ body {
     align-items: center;
     background-color: #0e111a;
     background-image: linear-gradient(to right, rgba(145, 30, 30, 0.9), rgba(30, 30, 165, 0.8));
-    height: 10vh;
+    /*height: 10vh;*/
     width: 100%;
 }
 
 #test{
     position: relative;
-    top: 10px;
+    top: 6px;
 }
 
 .con {
-    margin: 30px;
+    margin: 10px;
+    /*margin-left: 110px;*/
     display: inline-block;
     cursor: pointer;
 }
+
+@media only screen and (min-width: 376px) {
+    .con {
+        margin-left: 10px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .con {
+        margin-left: 90px;
+    }
+}
+/*@media only screen and (min-width: 992px) {*/
+/*    .con {*/
+/*        margin-left: 80px;*/
+/*    }*/
+/*}*/
+@media only screen and (min-width: 1400px) {
+    .con {
+        margin-left: 110px;
+    }
+}
+
 
 .nav {
     display: flex;
