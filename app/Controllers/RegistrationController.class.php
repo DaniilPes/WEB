@@ -12,7 +12,7 @@ class RegistrationController implements IController {
     }
 
     private function processRegistration(array $postData): string {
-        // Проверка данных
+        // Data validation
         if (
             empty($postData['login']) ||
             empty($postData['heslo']) ||
@@ -22,25 +22,25 @@ class RegistrationController implements IController {
             empty($postData['kurz']) ||
             $postData['heslo'] !== $postData['heslo2']
         ) {
-            return "ERROR: Все поля должны быть заполнены, и пароли должны совпадать.";
+            return "ERROR: All fields must be filled, and passwords must match.";
         }
 
-        // Проверка уникальности логина
+        // Check for unique login
         if ($this->db->getUserByLogin($postData['login'])) {
-            return "ERROR: Пользователь с таким логином уже существует.";
+            return "ERROR: A user with this login already exists.";
         }
 
-        // Добавление пользователя
+        // Add new user
         $success = $this->db->addNewUser(
             htmlspecialchars($postData['login'], ENT_QUOTES),
             htmlspecialchars($postData['heslo'], ENT_QUOTES),
             htmlspecialchars($postData['jmeno'], ENT_QUOTES),
             htmlspecialchars($postData['email'], ENT_QUOTES),
-            3, // Роль пользователя по умолчанию
+            3, // Default user role
             intval($postData['kurz'])
         );
 
-        return $success ? "OK: Пользователь успешно зарегистрирован." : "ERROR: Ошибка регистрации пользователя.";
+        return $success ? "OK: User successfully registered." : "ERROR: User registration failed.";
     }
 
     public function show(string $pageTitle): array {
