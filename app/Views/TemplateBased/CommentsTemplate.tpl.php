@@ -23,8 +23,8 @@ global $tplData;
             <div class="comment <?= $commentClass ?>">
                 <div class="comment-header">
                     <span class="author"><strong>Autor:</strong> <?= htmlspecialchars($comment['autor_name']) ?></span>
-                    <span class="right"><strong>Pravo:</strong> <?= htmlspecialchars($comment['right']) ?></span>
-                    <span class="course"><strong>Kurz:</strong> <?= htmlspecialchars($comment['course']) ?></span>
+                    <span class="right"><strong>Rights:</strong> <?= htmlspecialchars($comment['right']) ?></span>
+                    <span class="course"><strong>Course:</strong> <?= htmlspecialchars($comment['course']) ?></span>
                 </div>
                 <div class="comment-text">
 <!--                    --><?php //= htmlspecialchars($comment['text']) ?>
@@ -41,7 +41,7 @@ global $tplData;
                     <div class="comment-actions">
                         <form action="index.php?page=comments" method="POST">
                             <input type="hidden" name="id_comment" value="<?= htmlspecialchars($comment['id_comment']) ?>">
-                            <input type="submit" name="delete_comment" value="Smazat">
+                            <input type="submit" name="delete_comment" value="Delete">
                         </form>
                     </div>
                 <?php endif; ?>

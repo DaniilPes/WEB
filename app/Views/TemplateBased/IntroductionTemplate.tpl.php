@@ -1,13 +1,11 @@
 <?php
-
 global $tplData;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
-    <title> code academy</title>
+    <title>Code Academy</title>
 
     <link rel="stylesheet" href="public/MyCss/style-2.css">
     <link rel="stylesheet" href="public/MyCss/style-1.css">
@@ -33,47 +31,51 @@ global $tplData;
     <div class="osnova1.1">
         <img id="cmdPic" src="public/images/cmdPIC.png">
         <div class="cmdPicString">
-            Here you can learn a large number of skills in a variety of IT areas.</br>
+            Here you can learn a wide range of skills in various IT fields.</br>
             Such as: </br>
-            Data scientist; </br>
+            Data Scientist; </br>
             Tester;</br>
-            Information security specialist;</br>
+            Information Security Specialist;</br>
             Systems Analyst;</br>
-            Game designer;</br>
-            and others....</br>
-            Or improve your skills to advance your career or other goals </br>
+            Game Designer;</br>
+            and many more...</br>
+            Or enhance your skills to boost your career or achieve other goals. </br>
         </div>
     </div>
 
     <div class="courses">
         <div class="pros">
-            <h2 id="aboutUsH1"> About us </h2>
-            <div id="aboutUs" > Nabízíme širokou škálu kurzů programování,
-                navržených pro studenty všech úrovní - od začátečníků po zkušené profesionály.
-                Najdete u nás interaktivní lekce, praktické úkoly a projekty,
-                které vám pomohou zvládnout populární programovací jazyky a technologie.
-                Připojte se k naší komunitě a začněte svou cestu do světa IT s podporou zkušených lektorů a
-                pohodlné studijní platformy.
+            <h2 id="aboutUsH1">About Us</h2>
+            <div id="aboutUs"> We offer a wide range of programming courses,
+                designed for students of all levels - from beginners to experienced professionals.
+                You will find interactive lessons, practical tasks, and projects
+                that will help you master popular programming languages and technologies.
+                Join our community and start your journey into the world of IT with the support of experienced mentors and
+                a convenient learning platform.
             </div>
-            <div class ="test">
-                <div class="professionals" id="prof1"> <img src="public/images/person1.png" class="img-circle" width="150" height="150"> <br>-->
-                    <b> Pavel Verba </b> <br>
-                    <span style="font-size: 20px"> Specialista z kybernetiky</span>
+            <div class="test">
+                <div class="professionals" id="prof1">
+                    <img src="public/images/person1.png" class="img-circle" width="150" height="150"> <br>
+                    <b>Emma Watson</b> <br>
+                    <span style="font-size: 20px">Data Science Expert</span>
                     <hr style="color: black">
                 </div>
-                <div class="professionals" id="prof2"> <img src="public/images/person2.png" class="img-circle" width="150" height="150"> <br>
-                    <b> Pavel Technik </b> <br>
-                    <span style="font-size: 20px"> Specialista z xanaxu</span>
+                <div class="professionals" id="prof2">
+                    <img src="public/images/person2.png" class="img-circle" width="150" height="150"> <br>
+                    <b>Michael Johnson</b> <br>
+                    <span style="font-size: 20px">Cybersecurity Analyst</span>
                     <hr style="color: black">
                 </div>
-                <div class="professionals" id="prof3"> <img src="public/images/person3.png" class="img-circle" width="150" height="150"> <br>
-                    <b> Oleh Tabachinsky </b> <br>
-                    <span style="font-size: 20px"> Pivni specialista</span>
+                <div class="professionals" id="prof3">
+                    <img src="public/images/person3.png" class="img-circle" width="150" height="150"> <br>
+                    <b>Sophia Martinez</b> <br>
+                    <span style="font-size: 20px">Cloud Computing Specialist</span>
                     <hr style="color: black">
                 </div>
-                <div class="professionals" id="prof4"> <img src="public/images/person4.jpg" class="img-circle" width="150" height="150"> <br>
-                    <b> Evzen Dziakin </b> <br>
-                    <span style="font-size: 20px"> Specialista snusu</span>
+                <div class="professionals" id="prof4">
+                    <img src="public/images/person4.jpg" class="img-circle" width="150" height="150"> <br>
+                    <b>John Doe</b> <br>
+                    <span style="font-size: 20px">Artificial Intelligence Engineer</span>
                     <hr style="color: black">
                 </div>
             </div>
@@ -83,27 +85,27 @@ global $tplData;
         <div class="priceItem">
             <strong>Web Development</strong>
             <hr/>
-            Naučte se vytvářet moderní webové aplikace pomocí HTML, CSS a JavaScriptu.
+            Learn how to create modern web applications using HTML, CSS, and JavaScript.
             <hr/>
-            <span>Price: 299 $</span>
+            <span>Price: $299</span>
         </div>
         <div class="priceItem">
-            <strong>C courses</strong>
+            <strong>C Programming</strong>
             <hr/>
-            Základy programování v C: od syntaxe po práci s pamětí a datovými strukturami.
-            <span>Cena: 249 $</span>
+            Basics of C programming: from syntax to memory management and data structures.
+            <span>Price: $249</span>
         </div>
         <div class="priceItem">
-            <strong>Java pro začátečníky</strong>
+            <strong>Java for Beginners</strong>
             <hr/>
-            Naučte se vytvářet aplikace v Javě, včetně základů objektově orientovaného programování.
-            <span>Cena: 279 $</span>
+            Learn how to create applications in Java, including the basics of object-oriented programming.
+            <span>Price: $279</span>
         </div>
         <div class="priceItem">
-            <strong>Kotlin pro Android</strong>
+            <strong>Kotlin for Android</strong>
             <hr/>
-            Vývoj mobilních aplikací pro Android pomocí jazyka Kotlin a Android Studia.
-            <span>Cena: 319 $</span>
+            Develop Android mobile apps using Kotlin and Android Studio.
+            <span>Price: $319</span>
         </div>
     </div>
 </div>

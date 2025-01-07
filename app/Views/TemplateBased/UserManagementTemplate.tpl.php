@@ -9,17 +9,17 @@ global $tplData;
 <script src="public/javaScript/management.js"></script>
 
 <div class="container">
-    <h2>Seznam uživatelů</h2>
-    <a href="index.php?page=login" class="button">Zpět</a>
+    <h2>User List</h2>
+    <a href="index.php?page=login" class="button">Back</a>
     <table>
         <tr>
             <th>ID</th>
             <th>Login</th>
             <th>Jméno</th>
             <th>E-mail</th>
-            <th>Právo</th>
-            <th>Kurz</th>
-            <th>Akce</th>
+            <th>Rights</th>
+            <th>Course</th>
+            <th>Action</th>
         </tr>
         <?php foreach ($tplData['users'] as $user): ?>
             <tr>
@@ -38,7 +38,7 @@ global $tplData;
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="submit" name="aktualizace_pravo" value="Aktualizovat">
+                        <input type="submit" name="aktualizace_pravo" value="Update">
                     </form>
                 </td>
                 <td class="kurz">
@@ -52,13 +52,13 @@ global $tplData;
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="submit" name="aktualizace_kurz" value="Aktualizovat">
+                        <input type="submit" name="aktualizace_kurz" value="Update">
                     </form>
                 </td>
                 <td class="akce">
                     <form action="index.php?page=management" method="POST">
                         <input type="hidden" name="id_uzivatel" value="<?= htmlspecialchars($user['id_uzivatel']) ?>">
-                        <input type="submit" name="delete_user" value="Smazat">
+                        <input type="submit" name="delete_user" value="Delete">
                     </form>
                 </td>
             </tr>
