@@ -74,10 +74,18 @@ class TemplateBasics implements IView {
     <div class="header">
         <!-- Выпадающее меню с гамбургером -->
         <div class="dropdown" id="my_header">
-            <a class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+<!--            <a class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                <a class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">-->
                 <!-- Значок гамбургер-меню -->
-                <span class="navbar-toggler-icon"></span>
-            </a>
+<!--            <div>-->
+
+                <span class="navbar-toggler-icon btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </span>
+<!--            </div>-->
+<!--            </a>-->
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="index.php?page=start">Home</a></li>
                 <li><a class="dropdown-item" href="index.php?page=about">About</a></li>
@@ -85,24 +93,6 @@ class TemplateBasics implements IView {
                 <li><a class="dropdown-item" href="index.php?page=comments">Comments</a></li>
 
             </ul>
-<!--            --><?php
-//            // Добавляем пункт меню в зависимости от статуса пользователя
-//            if ($this->db->isUserLogged()) {
-//                $user = $this->db->getLoggedUserData();
-//                $login = $this->db->getLogin($user['id_uzivatel']);
-//
-//                if (isset($login['login'])) {
-//                    echo '<li><a class="dropdown-item" href="index.php?page=login">' . htmlspecialchars($login['login']) . '</a></li>';
-//                }
-//            } else {
-//                echo '<li><a class="dropdown-item" href="index.php?page=login">Login</a></li>';
-//            }
-//            ?>
-<!--            <li><a class="dropdown-item" href="index.php?page=main">-->
-<!--                    <img id="logoMain" src="public/images/codeChar.png" alt="Logo" style="height: 20px;">-->
-<!--                    Главная-->
-<!--                </a>-->
-<!--            </li>-->
             <nav class="nav">
                 <?php
                 // Check if the user is logged in and output the appropriate link

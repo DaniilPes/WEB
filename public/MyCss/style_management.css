@@ -1,4 +1,4 @@
-/* Основные стили */
+/* Основные стили для страницы */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,51 +11,91 @@ body {
     color: #fff;
 }
 
+/* Контейнер страницы */
 .containerR {
-    display: table; /* Используем table, чтобы контейнер подстраивался под содержимое */
-    width: auto; /* Убираем фиксированную ширину */
-    max-width: 90%; /* Ограничиваем максимальную ширину */
-    margin: 20px 10px;
-    /*padding: 20px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
     background-color: #fff;
     color: #333;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    overflow-x: auto; /* Горизонтальная прокрутка */
-    padding: 20px 10px;
-
-
+    max-width: 90%; /* Контейнер ограничен 90% ширины страницы */
 }
 
+/* Заголовок таблицы */
 h2 {
     text-align: center;
+    color: #232a42;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px; /* Минимальная ширина для сохранения структуры */
-    /*border: 2px solid #232A42FF;*/
+/* Ссылки */
+a.button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #232a42;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-th, td {
-    padding: 12px;
-    color: #232A42FF;
-    text-align: left;
-    white-space: nowrap; /* Запрещаем перенос текста */
+a.button:hover {
+    background-color: #404c73;
+}
+
+/* Контейнер таблицы */
+.table-responsive {
+    max-height: 500px; /* Ограничение высоты */
+    overflow-x: auto; /* Прокрутка по горизонтали */
+    overflow-y: auto; /* Прокрутка по вертикали */
     border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Контейнер занимает 90% ширины */
+    margin: 0 auto;
 }
 
+/* Таблица */
+table {
+    width: 100%; /* Таблица адаптируется под ширину контейнера */
+    min-width: 400px; /* Минимальная ширина таблицы */
+    border-collapse: collapse;
+    table-layout: auto; /* Автоматическое распределение колонок */
+}
+
+/* Заголовки таблицы */
 th {
-    color: #232A42FF;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Оставляем текст в одной строке */
 }
 
+/* Ячейки таблицы */
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    white-space: normal; /* Разрешаем перенос текста */
+    word-wrap: break-word; /* Перенос длинных слов */
+}
+
+/* Стили для четных строк */
 tr:nth-child(even) {
-    color: #232A42FF;
+    background-color: #f9f9f9;
 }
 
+/* Кнопки */
 button, input[type="submit"] {
-    background-color: #232A42FF;
+    background-color: #232a42;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -69,30 +109,60 @@ button:hover, input[type="submit"]:hover {
     background-color: #404c73;
 }
 
+/* Стили для select */
 select {
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
-/* Стили для респонсивности */
+/* Прокрутка только внутри таблицы */
+.table-responsive::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Адаптивные стили */
 @media (max-width: 768px) {
+    .table-responsive {
+        width: 95%; /* Контейнер немного шире на узких экранах */
+    }
+
     table {
-        font-size: 14px; /* Уменьшаем размер текста */
+        font-size: 14px; /* Уменьшение размера текста */
     }
 
     th, td {
-        padding: 8px; /* Уменьшаем внутренние отступы */
+        padding: 8px;
     }
 }
 
 @media (max-width: 500px) {
+    .table-responsive {
+        width: 100%; /* Контейнер занимает всю ширину */
+    }
+
     table {
-        font-size: 12px; /* Еще больше уменьшаем размер текста */
+        font-size: 12px; /* Еще меньше текст */
     }
 
     th, td {
-        padding: 5px; /* Минимальные отступы для компактного отображения */
+        padding: 5px;
     }
 }
 
+/* Убираем горизонтальный скролл на всей странице */
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}

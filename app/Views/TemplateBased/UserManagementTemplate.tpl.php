@@ -14,7 +14,7 @@ global $tplData;
 
     <h2>User List</h2>
     <a href="index.php?page=login" class="button">Back</a>
-    <div class="table-responsive " style="max-height: 500px; max-width:800px; width: auto">
+    <div class="table-responsive " style="">
         <table>
             <tr>
                 <th>ID</th>
