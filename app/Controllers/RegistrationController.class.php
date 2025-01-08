@@ -30,6 +30,8 @@ class RegistrationController implements IController {
             return "ERROR: A user with this login already exists.";
         }
 
+
+
         // Add new user
         $success = $this->db->addNewUser(
             htmlspecialchars($postData['login'], ENT_QUOTES),

@@ -49,7 +49,6 @@
     </div>
 </div>
 
-<script src="public/javaScript/script.js"></script>
 <script src="public/javaScript/coursesVideoScript.js"></script>
 
 </body>

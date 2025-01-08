@@ -9,6 +9,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
 }
 
 body {

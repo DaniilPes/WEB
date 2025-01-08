@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between; /* Элементы по краям */
-    align-items: center;
+    align-items: center; /* Выравнивание элементов по вертикали */
 }
 
 /* Кнопка гамбургера */
@@ -36,6 +36,7 @@
     position: relative;
 }
 
+/* Полоски гамбургера */
 .navbar-toggler-icon div {
     display: block;
     height: 4px; /* Толщина полосок */
@@ -43,6 +44,21 @@
     background-color: white; /* Белый цвет полосок */
     border-radius: 2px; /* Скругляем края полосок */
     transition: all 0.3s ease; /* Добавляем плавность для будущей анимации */
+}
+
+/* Верхняя полоска */
+.navbar-toggler-icon div:first-child {
+    margin-top: 0; /* Убираем лишние отступы сверху */
+}
+
+/* Средняя полоска */
+.navbar-toggler-icon div:nth-child(2) {
+    margin-top: 0; /* Убираем лишние отступы между полосками */
+}
+
+/* Нижняя полоска */
+.navbar-toggler-icon div:last-child {
+    margin-bottom: 0; /* Убираем лишние отступы снизу */
 }
 
 /* Стили для выпадающего меню */
@@ -64,7 +80,7 @@
     transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход цвета */
 }
 
-/* Цвет фона при наведении */
+/* Цвет фона принаведении */
 .dropdown-item:hover {
     background-color: #404c73; /* Цвет фона при наведении */
     color: #ffffff; /* Цвет текста при наведении */
@@ -109,5 +125,7 @@
 /* Логотип */
 #logoMain {
     padding-top: 8px;
-    height: 40px; /* Высота логотипа */
+    /*height: 40px; !* Высота логотипа *!*/
+    width: 80px;
 }
+

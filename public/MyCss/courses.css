@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    /*background-color: #f4f4f4;*/
+    background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
 }
 
 /*.con {*/

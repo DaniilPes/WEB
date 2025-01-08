@@ -198,6 +198,9 @@ class DatabaseModel {
     }
 
     public function addComment(int $userId, string $text, ?string $imagePath): bool {
+//        if ($imagePath) {
+//            $imagePath = $userId . '' . $imagePath;
+//        }
         $query = "INSERT INTO comments (autor_id, text, image_path) VALUES (:autor_id, :text, :image_path)";
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute([

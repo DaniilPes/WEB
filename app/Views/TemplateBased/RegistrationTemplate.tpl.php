@@ -2,7 +2,9 @@
 global $tplData;
 ?>
 <link rel="stylesheet" href="public/MyCss/style-1.css">
-<script src="public/javaScript/script.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <body class="choosingForm">
@@ -15,7 +17,7 @@ global $tplData;
                 codeAcademy
             </div>
             <?php if (isset($tplData['message'])): ?>
-                <div class="<?= strpos($tplData['message'], 'ERROR') === false ? 'success-message' : 'error-message' ?>">
+                <div class="<?= strpos($tplData['message'], 'ERROR') === false ? 'success-message' : 'alert alert-danger' ?>">
                     <?= htmlspecialchars($tplData['message'], ENT_QUOTES) ?>
                 </div>
             <?php endif; ?>

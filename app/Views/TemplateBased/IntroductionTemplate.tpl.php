@@ -2,7 +2,7 @@
 global $tplData;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cz">
 <head>
     <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
     <title>Code Academy</title>
@@ -12,15 +12,21 @@ global $tplData;
     <link rel="stylesheet" href="public/MyCss/style-2.css">
     <link rel="stylesheet" href="public/MyCss/responzivita2.css">
 
-    <script src ="public/javaScript/script.js"></script>
     <script src="https://kit.fontawesome.com/be98670a76.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
-<script>
-    function myFunction(x) {
-        x.classList.toggle("change");
-    }
-</script>
+<!--<script>-->
+<!--    function myFunction(x) {-->
+<!--        x.classList.toggle("change");-->
+<!--    }-->
+<!--</script>-->
 
 <?php
 //$tplData['db']->addHeader();
