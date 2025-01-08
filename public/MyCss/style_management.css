@@ -11,11 +11,11 @@ body {
     color: #fff;
 }
 
-.container {
+.containerR {
     display: table; /* Используем table, чтобы контейнер подстраивался под содержимое */
     width: auto; /* Убираем фиксированную ширину */
     max-width: 90%; /* Ограничиваем максимальную ширину */
-    margin: 20px auto;
+    margin: 20px 10px;
     /*padding: 20px;*/
     background-color: #fff;
     color: #333;
@@ -23,6 +23,8 @@ body {
     border-radius: 8px;
     overflow-x: auto; /* Горизонтальная прокрутка */
     padding: 20px 10px;
+
+
 }
 
 h2 {
@@ -93,3 +95,4 @@ select {
         padding: 5px; /* Минимальные отступы для компактного отображения */
     }
 }
+

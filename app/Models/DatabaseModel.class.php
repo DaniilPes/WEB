@@ -30,9 +30,10 @@ class DatabaseModel {
     }
 
     public function getLogin(string $id){
+        //ziskam login uzivatele
         $uzivatele = $this->selectFromTable(TABLE_UZIVATEL, "id_uzivatel=$id");
         if(empty($uzivatele)){
-            echo "bbbbbbb";
+//            echo "bbbbbbb";
             return null;
         } else {
 
@@ -61,7 +62,7 @@ class DatabaseModel {
                 $this->userLogout();
                 return null;
             }
-            // protoze DB vraci pole uzivatelu, tak vyjmu jeho prvni polozku a vratim ziskana data uzivatele
+            //  vyjmu prvni polozku poe a vratim ziskana data uzivatele
             return $userData[0];
         }
         // uzivatel neni prihlasen - vracim null
@@ -83,10 +84,8 @@ class DatabaseModel {
         return self::$database;
     }
 
-    /**
-     *  Vrati seznam vsech uzivatelu pro spravu uzivatelu.
-     *  @return array Obsah spravy uzivatelu.
-     */
+
+    //Vrati seznam vsech uzivatelu pro spravu uzivatelu.
     public function getAllUsers(){
         // ziskam vsechny uzivatele z DB razene dle ID a vratim je
         $users = $this->selectFromTable(TABLE_UZIVATEL, "", "id_uzivatel");
@@ -106,11 +105,13 @@ class DatabaseModel {
     }
 
     public function getAllCourses(){
+        // ziskam vsechna kurzy z DB  a vratim je
         $courses = $this->selectFromTable(TABLE_KURZY, "", "kurz_id ASC, cena ASC");
         return $courses;
     }
 
     public function getUserById(int $id){
+        // ziskam usery z DB  a vratim je
         $users = $this->selectFromTable(TABLE_UZIVATEL, "id_uzivatel=$id");
         if(empty($users)){
             return null;
@@ -146,7 +147,6 @@ class DatabaseModel {
 //            throw new \InvalidArgumentException("Invalid login format.");
 //        }
 //
-//        // Хэшируем пароль перед сохранением
 //        $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT);
 //
 //        $query = "INSERT INTO " . TABLE_UZIVATEL . " (login, heslo, jmeno, email, id_pravo, id_kurz)
@@ -164,13 +164,14 @@ class DatabaseModel {
 
 
     public function deleteCommentById(int $commentId): bool {
+        //smazu z tabulky
         $query = "DELETE FROM comments WHERE id_comment = :id_comment";
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute([':id_comment' => $commentId]);
     }
 
     public function getUserByLogin(string $login): ?array {
-        // Убедимся, что логин валиден (например, содержит только допустимые символы)
+        // validni li login?
         $login = trim($login); // Удаляем лишние пробелы
         if (empty($login) || !preg_match('/^[a-zA-Z0-9_]+$/', $login)) {
             throw new \InvalidArgumentException("Invalid login format.");
@@ -182,7 +183,7 @@ class DatabaseModel {
         $stmt->execute();
 
         $result = $stmt->fetch();
-        return $result ?: null; // Возвращает null, если пользователь не найден
+        return $result ?: null; // returns null, if no user
     }
 
     public function getRightById(int $id){
@@ -207,6 +208,7 @@ class DatabaseModel {
     }
 
     public function getAllComments() {
+        // ziskam vsechna comentare z DB  a vratim je
         $stmt = $this->pdo->query("
         SELECT 
             c.id_comment, 
@@ -269,7 +271,6 @@ class DatabaseModel {
 //        $user = $stmt->fetch();
 //
 //        if ($user) {
-//            // Проверяем введённый пароль с хэшем из базы
 //            if (password_verify($heslo, $user['heslo'])) {
 //                $this->mySession->addSession(self::KEY_USER, $user['id_uzivatel']);
 //                return true;

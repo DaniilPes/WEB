@@ -84,7 +84,7 @@ input[type="submit"] {
 }
 
 /* Общие стили для кнопок */
-.button, .btn {
+.button, .butn {
     width: 400px;
     height: 75px;
     background-color: rgba(10, 10, 10, 0);
@@ -107,7 +107,7 @@ a.button {
     border-style: groove;
 }
 
-.button:hover, .btn:hover {
+.button:hover, .butn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
@@ -205,3 +205,22 @@ b {
     /*display: flex;*/
 
 }
+
+/*#dropdownMenuButton{*/
+/*    width: 400px;*/
+/*    height: 75px;*/
+/*    background-color: rgba(10, 10, 10, 0);*/
+/*    border-color: black;*/
+/*    border-radius: 50px;*/
+/*    font-size: 25px;*/
+/*    transition: 0.3s;*/
+/*    cursor: pointer;*/
+/*    color: #ffffff;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    margin-bottom: 16px;*/
+/*}*/
+

@@ -27,11 +27,9 @@ class IntroductionController implements IController {
      * @return array                Vytvorena data pro sablonu.
      */
     public function show(string $pageTitle):array {
-        //// vsechna data sablony budou globalni
         $tplData = [];
         // nazev
         $tplData['title'] = $pageTitle;
-        // data pohadek
 //        $tplData['db'] = $this->db;
 
         // vratim sablonu naplnenou daty

@@ -64,20 +64,45 @@ class TemplateBasics implements IView {
      *  @param string $pageTitle    Nazev stranky.
      */
     public function getHTMLHeader(string $pageTitle) {
-        $this->db = DatabaseModel::getDatabaseModel();
-        ?>
-        <div class="divNav">
-            <div class="con" onclick="myFunction(this)">
-<!--                <div class="bar1"></div>-->
-<!--                <div class="bar2"></div>-->
-<!--                <div class="bar3"></div>-->
-            </div>
-            <nav class="nav">
-                <a style="text-decoration:none" href="index.php?page=start" class="NI">Home</a>
-                <a style="text-decoration:none" href="index.php?page=about" class="NI" accive-color="green">About</a>
-                <a style="text-decoration:none" href="index.php?page=courses" class="NI">Courses</a>
-                <a style="text-decoration:none" href="index.php?page=comments" class="NI">Comments</a>
-            </nav>
+    $this->db = DatabaseModel::getDatabaseModel();
+    ?>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/MyCss/header_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div class="header">
+        <!-- Выпадающее меню с гамбургером -->
+        <div class="dropdown" id="my_header">
+            <a class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- Значок гамбургер-меню -->
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="index.php?page=start">Home</a></li>
+                <li><a class="dropdown-item" href="index.php?page=about">About</a></li>
+                <li><a class="dropdown-item" href="index.php?page=courses">Courses</a></li>
+                <li><a class="dropdown-item" href="index.php?page=comments">Comments</a></li>
+
+            </ul>
+<!--            --><?php
+//            // Добавляем пункт меню в зависимости от статуса пользователя
+//            if ($this->db->isUserLogged()) {
+//                $user = $this->db->getLoggedUserData();
+//                $login = $this->db->getLogin($user['id_uzivatel']);
+//
+//                if (isset($login['login'])) {
+//                    echo '<li><a class="dropdown-item" href="index.php?page=login">' . htmlspecialchars($login['login']) . '</a></li>';
+//                }
+//            } else {
+//                echo '<li><a class="dropdown-item" href="index.php?page=login">Login</a></li>';
+//            }
+//            ?>
+<!--            <li><a class="dropdown-item" href="index.php?page=main">-->
+<!--                    <img id="logoMain" src="public/images/codeChar.png" alt="Logo" style="height: 20px;">-->
+<!--                    Главная-->
+<!--                </a>-->
+<!--            </li>-->
             <nav class="nav">
                 <?php
                 // Check if the user is logged in and output the appropriate link
@@ -87,7 +112,7 @@ class TemplateBasics implements IView {
 
                     if (isset($login['login'])) {
 //                        echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">' . htmlspecialchars($login['login']) . '</a>';
-                        echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">' . 'me' . '</a>';
+                        echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">' . 'Me' . '</a>';
                     }
                 } else {
                     echo '<a style="text-decoration:none" href="index.php?page=login" class="NI" id="test">Login</a>';
@@ -97,9 +122,28 @@ class TemplateBasics implements IView {
                     <img id="logoMain" src="public/images/codeChar.png" alt="Logo">
                 </a>
             </nav>
+
+
         </div>
+    </div>
+
+    <!-- Подключение Bootstrap JS -->
+
+    <style>
+        /* Дополнительные стили для кнопки */
+        .btn-primary .navbar-toggler-icon {
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            background: no-repeat center center;
+            background-size: contain;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28155, 155, 155, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+    </style>
+
         <?php
     }
+
 
 
     /**

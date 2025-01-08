@@ -62,6 +62,6 @@ global $tplData;
 
 </div>
 <script>
-    // Инициируем CKEditor на нашем textarea
+    //  CKEditor textarea
     CKEDITOR.replace('comment_text');
 </script>

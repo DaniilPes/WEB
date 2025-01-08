@@ -58,7 +58,7 @@ class CommentController implements IController {
         $tplData['comments'] = $this->handleComments();
         $tplData['user'] = $this->db->getLoggedUserData();
 
-        return $tplData; // Возвращаем данные для шаблона
+        return $tplData;
     }
 
     public function handleCommentActions() {

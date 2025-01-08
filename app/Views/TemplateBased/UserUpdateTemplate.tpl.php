@@ -9,8 +9,6 @@ global $tplData;
 <?php else: ?>
 
     <link rel="stylesheet" href="public/MyCss/style-1.css">
-    <script src="public/script.js"></script>
-<!--    <h2>Personal Information</h2>-->
 
     <form action="" method="POST" autocomplete="off">
         <br>

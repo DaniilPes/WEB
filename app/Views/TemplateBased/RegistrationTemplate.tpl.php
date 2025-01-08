@@ -46,7 +46,7 @@ global $tplData;
             <br>
             <input class="button" type="submit" name="potvrzeni" value="Register" >
             <label class="center" for="RegisterInput" >or</label>
-            <a href="index.php?page=login" class="btn" id="linkReg">Continue</a>
+            <a href="index.php?page=login" class="butn" id="linkReg">Continue</a>
         </form>
 <!--    </div>-->
 <?php else: ?>
