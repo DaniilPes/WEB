@@ -9,7 +9,8 @@
     "require": {
         "php": ">=7.4",
         "ezyang/htmlpurifier": "^4.18",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+      "ext-json": "*"
     },
     "autoload": {
         "psr-4": {

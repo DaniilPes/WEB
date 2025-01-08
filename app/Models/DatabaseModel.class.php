@@ -141,6 +141,28 @@ class DatabaseModel {
         ]);
     }
 
+//    public function addNewUser(string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $kurz): bool {
+//        if (!preg_match('/^[a-zA-Z0-9_]+$/', $login)) {
+//            throw new \InvalidArgumentException("Invalid login format.");
+//        }
+//
+//        // Хэшируем пароль перед сохранением
+//        $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT);
+//
+//        $query = "INSERT INTO " . TABLE_UZIVATEL . " (login, heslo, jmeno, email, id_pravo, id_kurz)
+//              VALUES (:login, :heslo, :jmeno, :email, :idPravo, :kurz)";
+//        $stmt = $this->pdo->prepare($query);
+//        return $stmt->execute([
+//            ':login' => $login,
+//            ':heslo' => $hashedPassword,
+//            ':jmeno' => $jmeno,
+//            ':email' => $email,
+//            ':idPravo' => $idPravo,
+//            ':kurz' => $kurz,
+//        ]);
+//    }
+
+
     public function deleteCommentById(int $commentId): bool {
         $query = "DELETE FROM comments WHERE id_comment = :id_comment";
         $stmt = $this->pdo->prepare($query);
@@ -239,9 +261,29 @@ class DatabaseModel {
         return false;
     }
 
+
+//    public function userLogin(string $login, string $heslo): bool {
+//        $query = "SELECT id_uzivatel, heslo FROM " . TABLE_UZIVATEL . " WHERE login = :login";
+//        $stmt = $this->pdo->prepare($query);
+//        $stmt->execute([':login' => $login]);
+//        $user = $stmt->fetch();
+//
+//        if ($user) {
+//            // Проверяем введённый пароль с хэшем из базы
+//            if (password_verify($heslo, $user['heslo'])) {
+//                $this->mySession->addSession(self::KEY_USER, $user['id_uzivatel']);
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
+
+
+
     public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $idKurz): bool {
-        $query = "UPDATE " . TABLE_UZIVATEL . " 
-              SET login = :login, heslo = :heslo, jmeno = :jmeno, email = :email, id_pravo = :idPravo, id_kurz = :idKurz 
+        $query = "UPDATE " . TABLE_UZIVATEL . "
+              SET login = :login, heslo = :heslo, jmeno = :jmeno, email = :email, id_pravo = :idPravo, id_kurz = :idKurz
               WHERE id_uzivatel = :idUzivatel";
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute([
@@ -254,6 +296,25 @@ class DatabaseModel {
             ':idUzivatel' => $idUzivatel,
         ]);
     }
+
+//    public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo, int $idKurz): bool {
+//        $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT);
+//
+//        $query = "UPDATE " . TABLE_UZIVATEL . "
+//              SET login = :login, heslo = :heslo, jmeno = :jmeno, email = :email, id_pravo = :idPravo, id_kurz = :idKurz
+//              WHERE id_uzivatel = :idUzivatel";
+//        $stmt = $this->pdo->prepare($query);
+//        return $stmt->execute([
+//            ':login' => $login,
+//            ':heslo' => $hashedPassword,
+//            ':jmeno' => $jmeno,
+//            ':email' => $email,
+//            ':idPravo' => $idPravo,
+//            ':idKurz' => $idKurz,
+//            ':idUzivatel' => $idUzivatel,
+//        ]);
+//    }
+
 
 
     public function isUserLogged():bool {
