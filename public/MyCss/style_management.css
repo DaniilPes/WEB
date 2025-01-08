@@ -65,7 +65,7 @@ a.button:hover {
 table {
     width: 100%; /* Таблица адаптируется под ширину контейнера */
     min-width: 400px; /* Минимальная ширина таблицы */
-    border-collapse: collapse;
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
     table-layout: auto; /* Автоматическое распределение колонок */
 }
 
@@ -75,17 +75,18 @@ th {
     color: #333;
     text-align: left;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc; /* Добавляем границы заголовкам */
     white-space: nowrap; /* Оставляем текст в одной строке */
 }
 
 /* Ячейки таблицы */
 td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc; /* Добавляем границы ячейкам */
     text-align: left;
     white-space: normal; /* Разрешаем перенос текста */
     word-wrap: break-word; /* Перенос длинных слов */
+    color: #0e111a;
 }
 
 /* Стили для четных строк */
@@ -166,4 +167,3 @@ html, body {
     margin: 0;
     padding: 0;
 }
-

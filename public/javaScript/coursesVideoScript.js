@@ -1,21 +1,17 @@
-// Получаем модальное окно
 var modal = document.getElementById("courseModal");
 
-// Получаем элемент <span>, который закрывает модальное окно
 var span = document.getElementsByClassName("close")[0];
 
 // Получаем все кнопки "Learn More"
 var learnMoreButtons = document.querySelectorAll('.course-link');
 
-// Добавляем обработчик событий для каждой кнопки
 learnMoreButtons.forEach(function(button) {
     button.onclick = function(event) {
-        event.preventDefault(); // Предотвращаем переход по ссылке
+        event.preventDefault();
 
-        // Получаем родительский элемент курса
+
         var courseCard = this.closest('.course-card');
 
-        // Получаем заголовок курса из родительского элемента
         var courseTitle = courseCard.querySelector('h3').innerText;
         var courseDescription = "";
 
@@ -59,17 +55,15 @@ learnMoreButtons.forEach(function(button) {
     }
 });
 
-// Когда пользователь нажимает на <span> (x), закрываем модальное окно
 span.onclick = function() {
     modal.style.display = "none";
 }
 
-// Когда пользователь нажимает в любом месте вне модального окна, закрываем его
+
 window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 }
 
-// Получаем модальное окно
 var modal = document.getElementById("courseModal");

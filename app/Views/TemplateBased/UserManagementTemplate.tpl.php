@@ -1,9 +1,9 @@
 <?php
 global $tplData;
 ?>
-
-<link rel="stylesheet" href="public/MyCss/style_management.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="public/MyCss/style_management.css">
+
 <style>
     a { font-size: 25px; }
 </style>

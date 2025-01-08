@@ -1,25 +1,29 @@
 <?php
 global $tplData;
 ?>
+<link rel="stylesheet" href="public/MyCss/style-1.css">
 <body class="choosingForm">
 <?php if (!$tplData['isLogged']): ?>
     <div>
-        <b>Only logged-in users can edit personal information.</b>
+        <b class="alert <?= strpos($tplData['message'], 'ERROR') === false ? 'alert-success' : 'alert-danger' ?> alert-dismissible fade show" role="alert">
+            Only logged-in users can edit personal information.
+        </b>
     </div>
 <?php else: ?>
 
-    <link rel="stylesheet" href="public/MyCss/style-1.css">
+
 
     <form action="" method="POST" autocomplete="off">
         <br>
         <input type="hidden" name="id_uzivatel" value="<?= $tplData['userData']['id_uzivatel'] ?>">
         <?php if (!empty($tplData['message'])): ?>
-<!--            <div class="message">-->
-<!--                --><?php //= htmlspecialchars($tplData['message']) ?>
+    <!--            <div class="message">-->
+    <!--                --><?php //= htmlspecialchars($tplData['message']) ?>
+    <!--            </div>-->
+<!--            <div class="--><?php //= strpos($tplData['message'], 'ERROR') === false ? 'success-message' : 'error-message' ?><!--">-->
+<!--                --><?php //= htmlspecialchars($tplData['message'], ENT_QUOTES) ?>
 <!--            </div>-->
-            <div class="<?= strpos($tplData['message'], 'ERROR') === false ? 'success-message' : 'error-message' ?>">
-                <?= htmlspecialchars($tplData['message'], ENT_QUOTES) ?>
-            </div>
+            <div class="alert alert-danger" role="alert"><?= htmlspecialchars($tplData['message'], ENT_QUOTES) ?></div>
         <?php endif; ?>
         <label>Login: <?= htmlspecialchars($tplData['userData']['login']) ?></label>
 

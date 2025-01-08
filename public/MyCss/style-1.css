@@ -1,15 +1,35 @@
-/* Общие стили для body */
-html,body {
+/* Убедимся, что html и body занимают всю высоту страницы */
+html, body {
     margin: 0;
     padding: 0;
-    border: 0;
-    height: 100%;
     width: 100%;
+    min-height: 100%;
     background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
     font-family: Bahnschrift, serif;
-    /*justify-content: center; !* Центрируем по горизонтали *!*/
-        /*align-items: center; !* Центрируем по вертикали *!*/
-    /*display: flex;*/
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+}
+
+/* Центрирование формы */
+.choosingForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем форму по горизонтали */
+    padding: 20px; /* Добавляем отступы сверху и снизу */
+    box-sizing: border-box;
+    min-height: 100%; /* Занимаем всю высоту страницы */
+}
+
+/* Контейнер формы */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина формы */
+    margin: 20px auto; /* Центрируем форму по горизонтали */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для формы */
+    border-radius: 15px; /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Тень */
 }
 
 /* Стили для логотипа */
@@ -17,210 +37,104 @@ html,body {
     font-family: Bahnschrift, serif;
     font-size: 40px;
     color: #e6e6e6;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.error-message{
-    color: #bb0b0b;
-}
-
-.succes-message{
-    color: #45a049;
-}
-
-/* Стили для формы ввода */
-#inputForm {
-    position: absolute;
-    background: radial-gradient(farthest-corner at 100px 300px, #232a42 10%, #0e111a 90%);
-    height: 100%;
-    width: 100%;
-    font-family: Bahnschrift, serif;
-    font-size: 25px;
-}
-
-/* Стили для выравнивания элементов по центру */
-.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #e6e6e6 !important;
-}
-
-/* Стили для блока справа */
-#sprava {
-    display: flex;
-    flex-direction: column;
-    min-width: 400px;
-    max-width: 400px;
-    margin: auto;
-}
-
-/* Стили для формы */
-form {
-    display: flex;
-    flex-direction: column;
-    min-width: 400px;
-    max-width: 400px;
-    /*margin: auto;*/
-
-
-}
-
-/* Стили для меток формы */
-label {
-    color: #e6e6e6;
-    margin-bottom: 8px;
-    font-size: 25px;
-}
-
-/* Стили для полей ввода */
-input {
+/* Поля ввода */
+input, select {
     margin-bottom: 16px;
-    padding: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Учитываем padding в ширине */
 }
 
-/* Стили для кнопки отправки формы */
+/* Кнопка отправки */
 input[type="submit"] {
     cursor: pointer;
-}
-
-/* Общие стили для кнопок */
-.button, .butn {
-    width: 400px;
-    height: 75px;
-    background-color: rgba(10, 10, 10, 0);
-    border-color: black;
-    border-radius: 50px;
-    font-size: 25px;
-    transition: 0.3s;
-    cursor: pointer;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 10px;
+    background-color: #232a42;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
     text-align: center;
-    text-decoration: none;
-    margin-bottom: 16px;
+    width: 100%;
 }
 
-a.button {
-    border-width: 3px;
-    border-style: groove;
+input[type="submit"]:hover {
+    background-color: #404c73;
+}
+
+/* Общие стили для кнопок-ссылок */
+.button, .butn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    color: white;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+    text-decoration: none;
 }
 
 .button:hover, .butn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    background-color: #404c73;
+    color: white;
+}
+
+/* Стили для алертов */
+.alert {
+    margin-bottom: 15px; /* Отступы под алертом */
+    width: 100%; /* Алерт занимает всю ширину формы */
+    box-sizing: border-box;
 }
 
 /* Стили для текста */
+label {
+    color: #e6e6e6;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Стили для ошибок */
+.alert-danger {
+    background-color: #bb0b0b;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.alert-success {
+    background-color: #45a049;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Центрирование текста */
 b {
-    font-size: 25px;
+    font-size: 18px;
 }
 
-/* Стили для блока теста */
-#test {
-    position: relative;
-    top: 9px;
-}
-
-/* Стили для ценовых блоков */
-.price {
-    display: flex;
-    flex-wrap: wrap; /* Добавляет перенос строк для детей, если они не помещаются в одну строку */
-    justify-content: center; /* Центрирует элементы внутри контейнера */
-    padding: 20px; /* Добавляет отступы вокруг блока price */
-    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте элементов */
-}
-
-.priceItem {
-    position: relative;
-    width: 22.5%;
-    height: 500px;
-    margin: 20px 1.25%; /* Сокращает внешний отступ для лучшей респонсивности */
-    border: 3px solid #171616;
-    font-size: 30px;
-    color: #ffffff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
-    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте элемента */
-    background: linear-gradient(135deg, rgba(30, 30, 165, 0.8), rgba(145, 30, 30, 0.9)); /* Градиентный фон */
-    border-radius: 15px; /* Закругленные углы */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень для блока */
-    transition: transform 0.3s, box-shadow 0.3s; /* Плавные переходы */
-}
-
-.priceItem strong {
-    font-size: 35px;
-    color: #ffffff;
-    margin-top: 20px;
-}
-
-.priceItem hr {
-    width: 80%;
-    margin: 20px auto;
-    border-color: #ffffff;
-}
-
-.priceItem span {
-    margin-top: auto;
-    margin-bottom: 50px;
-    font-size: 25px;
-    color: #ffffff;
-}
-
-.priceItem:hover {
-    transform: translateY(-10px); /* Поднятие элемента при наведении */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Увеличение тени при наведении */
-}
-
-/* Медиазапросы для респонсивности */
-@media (max-width: 1200px) {
-    .priceItem {
-        width: 30%; /* Увеличивает ширину для устройств с шириной экрана до 1200px */
-    }
-}
-
-@media (max-width: 992px) {
-    .priceItem {
-        width: 45%; /* Увеличивает ширину для устройств с шириной экрана до 992px */
-    }
-}
-
+/* Респонсивные стили */
 @media (max-width: 768px) {
-    .priceItem {
-        width: 90%; /* Увеличивает ширину для устройств с шириной экрана до 768px */
-        margin: 10px 0; /* Уменьшает внешние отступы для лучшего размещения элементов */
+    form {
+        max-width: 90%; /* Уменьшаем ширину формы для маленьких экранов */
+    }
+
+    .button, .butn {
+        width: 100%; /* Кнопки занимают всю ширину на маленьких экранах */
+        margin-bottom: 10px;
     }
 }
 
-.choosingForm{
-    /*justify-content: center; */
-    /*align-content: center; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Центрируем по горизонтали */
-    align-items: center; /* Центрируем по вертикали */
-    /*display: flex;*/
-
+b, h2 {
+    color: #e5dddd;
 }
-
-/*#dropdownMenuButton{*/
-/*    width: 400px;*/
-/*    height: 75px;*/
-/*    background-color: rgba(10, 10, 10, 0);*/
-/*    border-color: black;*/
-/*    border-radius: 50px;*/
-/*    font-size: 25px;*/
-/*    transition: 0.3s;*/
-/*    cursor: pointer;*/
-/*    color: #ffffff;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    text-align: center;*/
-/*    text-decoration: none;*/
-/*    margin-bottom: 16px;*/
-/*}*/
-
