@@ -138,3 +138,32 @@ b {
 b, h2 {
     color: #e5dddd;
 }
+
+/* Общие стили для всех кнопок */
+.button, .butn, input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    text-align: center;
+    background-color: #232a42; /* Фон кнопки */
+    border: 2px solid #ccc; /* Граница */
+    color: white; /* Цвет текста */
+    border-radius: 5px; /* Скругленные углы */
+    transition: transform 0.3s, background-color 0.3s, color 0.3s; /* Анимация при наведении */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    font-size: 16px; /* Размер текста */
+    cursor: pointer; /* Указатель курсора для всех кнопок */
+}
+
+/* Эффект при наведении */
+.button:hover, .butn:hover, input[type="submit"]:hover {
+    transform: scale(1.1); /* Увеличение кнопки */
+    background-color: #404c73; /* Изменение фона при наведении */
+    color: white; /* Цвет текста при наведении */
+}
+
+/* Для ссылок с классом .button убираем лишние свойства */
+a.button {
+    text-decoration: none; /* Убираем подчеркивание */
+    display: inline-block; /* Делаем ссылку блочным элементом */
+}
+

@@ -56,7 +56,7 @@ global $tplData;
             </form>
         </div>
     <?php else: ?>
-        <p>Please, <a href="index.php?page=login">Log in</a>, to leave a comment.</p>
+        <p class="alert alert-danger" role="alert" style="background-color: #b64141; border-color: transparent">Please, <a href="index.php?page=login" >Log in</a>, to leave a comment.</p>
     <?php endif; ?>
 
 
