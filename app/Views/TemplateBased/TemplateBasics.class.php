@@ -72,20 +72,17 @@ class TemplateBasics implements IView {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <div class="header">
-        <!-- Выпадающее меню с гамбургером -->
         <div class="dropdown" id="my_header">
-<!--            <a class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                <a class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">-->
-                <!-- Значок гамбургер-меню -->
-<!--            <div>-->
 
-                <span class="navbar-toggler-icon btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+<!--                <span class="navbar-toggler-icon btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"">-->
+                <span class="navbar-toggler btn btn-primary " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"">
+<!--                    <div></div>-->
+<!--                    <div></div>-->
+<!--                    <div></div>-->
+                    <div class="burger-line line1" style="background-color: #e1d0d0"></div>
+                    <div class="burger-line line2" style="background-color: #e1d0d0"></div>
+                    <div class="burger-line line3" style="background-color: #e1d0d0"></div>
                 </span>
-<!--            </div>-->
-<!--            </a>-->
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="index.php?page=start">Home</a></li>
                 <li><a class="dropdown-item" href="index.php?page=about">About</a></li>
@@ -129,7 +126,51 @@ class TemplateBasics implements IView {
             background-size: contain;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28155, 155, 155, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
+        /* Стили для бургер-меню */
+        .navbar-toggler {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2rem;
+            height: 2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .burger-line {
+            width: 2rem;
+            height: 0.25rem;
+            background-color: #000;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+            position: relative;
+        }
+
+        /* Анимация при открытии */
+        .navbar-toggler.open .line1 {
+            transform: rotate(45deg) translate(5px, 13px);
+        }
+
+        .navbar-toggler.open .line2 {
+            opacity: 0;
+        }
+
+        .navbar-toggler.open .line3 {
+            transform: rotate(-45deg) translate(5px, -14px);
+        }
+
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerButton = document.getElementById('dropdownMenuButton');
+            burgerButton.addEventListener('click', function () {
+                this.classList.toggle('open');
+            });
+        });
+    </script>
+
 
         <?php
     }
